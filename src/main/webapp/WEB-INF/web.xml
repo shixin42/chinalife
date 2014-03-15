@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <context-param>
+        <param-name>db.config.file</param-name>
+        <param-value>db_config.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.max.idle</param-name>
+        <param-value>30</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.max.total</param-name>
+        <param-value>100</param-value>
+    </context-param>
+    
+    <listener>
+        <listener-class>com.chinalife.listener.SServletContextListener</listener-class>
+    </listener>
+</web-app>

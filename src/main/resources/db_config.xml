@@ -1,0 +1,10 @@
+<database>
+    <connections>
+        <connection name="chinalife"
+                    url="jdbc:mysql://localhost/chinalife?useUnicode=true&amp;characterEncoding=utf-8" user="shixin"
+                    pwd="shixin" role="master"></connection>
+    </connections>
+    <tables>
+        <table name="test" con_refs="chinalife"></table>
+    </tables>
+</database>
