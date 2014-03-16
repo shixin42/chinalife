@@ -45,8 +45,8 @@
                 <!--这里要配置成你自己的需要放log的目录-->
                 <log4j_path>/home/shixin/soft/apache-tomcat-7.0.52/logs</log4j_path>
                 <log4j_level>INFO</log4j_level>
-                <db_user>cuichao</db_user>
-                <db_password>cuichao</db_password>
+                <db_user>root</db_user>
+                <db_password>root</db_password>
             </properties>
         </profile>
     </profiles>
