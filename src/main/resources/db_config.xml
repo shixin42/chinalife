@@ -1,8 +1,10 @@
 <database>
     <connections>
         <connection name="chinalife"
-                    url="jdbc:mysql://localhost/chinalife?useUnicode=true&amp;characterEncoding=utf-8" user="shixin"
-                    pwd="shixin" role="master"></connection>
+                    url="jdbc:mysql://localhost/chinalife?useUnicode=true&amp;characterEncoding=utf-8"
+                    user="${db_user}"
+                    pwd="${db_password}"
+                    role="master"/>
     </connections>
     <tables>
         <table name="test" con_refs="chinalife"></table>

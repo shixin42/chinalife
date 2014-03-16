@@ -10,6 +10,47 @@
 
     <packaging>war</packaging>
 
+    <properties>
+        <log4j_path>/Users/ishikin/soft/apache-tomcat-7.0.52/logs</log4j_path>
+        <log4j_level>INFO</log4j_level>
+        <db_user>shixin</db_user>
+        <db_password>shixin</db_password>
+    </properties>
+    <profiles>
+        <profile>
+            <id>shixin_environment</id>
+            <activation>
+                <property>
+                    <name>S</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <log4j_path>/Users/ishikin/soft/apache-tomcat-7.0.52/logs</log4j_path>
+                <log4j_level>INFO</log4j_level>
+                <db_user>shixin</db_user>
+                <db_password>shixin</db_password>
+            </properties>
+        </profile>
+        <profile>
+            <id>cuichao_environment</id>
+            <activation>
+                <property>
+                    <name>C</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <!--崔超，你需要改的基于你自己开发环境的变量都在这里, 然后使用‘mvn -DC=true clean packge’就可以编译-->
+                <!--这里要配置成你自己的需要放log的目录-->
+                <log4j_path>/home/shixin/soft/apache-tomcat-7.0.52/logs</log4j_path>
+                <log4j_level>INFO</log4j_level>
+                <db_user>cuichao</db_user>
+                <db_password>cuichao</db_password>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>com.shixin</groupId>
@@ -17,19 +58,31 @@
             <version>0.0.1</version>
         </dependency>
         <dependency>
+            <groupId>com.shixin</groupId>
+            <artifactId>shixin-util</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet</artifactId>
             <version>3.0.0.v201103241009</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
+            <version>1.2.16</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -40,6 +93,17 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

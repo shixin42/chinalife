@@ -11,7 +11,7 @@
     </welcome-file-list>
     
     <context-param>
-        <param-name>db.config.file</param-name>
+        <param-name>db.config.name</param-name>
         <param-value>db_config.xml</param-value>
     </context-param>
     <context-param>

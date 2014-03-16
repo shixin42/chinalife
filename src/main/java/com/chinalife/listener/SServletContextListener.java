@@ -10,7 +10,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -19,32 +19,35 @@ import java.util.Properties;
 public class SServletContextListener implements ServletContextListener {
     private Logger logger = Logger.getLogger(SServletContextListener.class);
 
+    private ServletContext servletContext;
     private String dbConfigName;
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ServletContext servletContext = servletContextEvent.getServletContext();
-
-        this.dbConfigName = servletContext.getInitParameter("db.config.name");
-        Validate.notEmpty(this.dbConfigName);
-
-        Properties dbProperties = new Properties();
-        String maxIdle = servletContext.getInitParameter("db.max.idle");
-        if (StringUtils.isNoneEmpty(maxIdle)) {
-            dbProperties.put("max.idle", Integer.parseInt(maxIdle));
-        }
-        String maxTotal = servletContext.getInitParameter("db.max.total");
-        if (StringUtils.isNoneEmpty(maxTotal)) {
-            dbProperties.put("max.total", Integer.parseInt(maxTotal));
-        }
-
-        File dbConfigFile = new File(this.dbConfigName);
-        Validate.isTrue(dbConfigFile.exists(), "Cant find db config file : " + this.dbConfigName);
-
         try {
-            DBAccesser.createInstance(new FileInputStream(dbConfigFile), dbProperties);
-        } catch (FileNotFoundException e) {
-            logger.error("Failed to create db accessor", e);
+            logger.info("Initializing ServletContext.");
+
+            this.servletContext = servletContextEvent.getServletContext();
+
+            this.dbConfigName = servletContext.getInitParameter("db.config.name");
+            Validate.notEmpty(this.dbConfigName, "db.config.name cant be empty!");
+
+            Properties dbProperties = new Properties();
+            String maxIdle = servletContext.getInitParameter("db.max.idle");
+            if (StringUtils.isNoneEmpty(maxIdle)) {
+                dbProperties.put("max.idle", Integer.parseInt(maxIdle));
+            }
+            String maxTotal = servletContext.getInitParameter("db.max.total");
+            if (StringUtils.isNoneEmpty(maxTotal)) {
+                dbProperties.put("max.total", Integer.parseInt(maxTotal));
+            }
+
+            InputStream dbStream = getClass().getClassLoader().getResourceAsStream(this.dbConfigName);
+            Validate.notNull(dbStream, "Cant find db config file : " + this.dbConfigName);
+
+            DBAccesser.createInstance(dbStream, dbProperties);
+        } catch (Exception e) {
+            logger.error("Failed init ServerContext due to:", e);
         }
     }
 
