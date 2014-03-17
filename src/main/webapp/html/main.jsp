@@ -15,21 +15,46 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="../js/jquery-1.10.1.js" type="text/javascript"></script>
     <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/jquery.cookie.js" type="text/javascript"></script>
     <script type="application/javascript" language="JavaScript">
+        $(function() {
+            //初始化页面，查看cookie用户名和密码情况。
+            var name = unescape($.cookie("cookieUserName"));
+            var pwd = unescape($.cookie("cookiePassword"));
+            $("#userMenu").toggle();
+            if (name == "undefined" ||  pwd == "undefined")
+            {
+                //alert("af"+name+":"+pwd);
+            }
+            else
+            {
+                $("#exampleInputEmail1").val(name);
+                $("#exampleInputPassword1").val(pwd);
+            }
+        });
         function userLogonJS()
         {
-            var username = $("#exampleInputEmail1").val();
-            var password = $("#exampleInputPassword1").val();
-            var check_remember = $("#checkRememberBox").checked;
-            alert(username +":"+password + ":"+check_remember);
-            var param = "username="+username+"&password="+password+"&check_remember="+check_remember;
+            var username = escape($("#exampleInputEmail1").val());
+            var password = escape($("#exampleInputPassword1").val());
+            //var time = "10"; //设置cookies 保存时间
+            if ($("#checkRememberBox").is(":checked"))
+            {
+                $.cookie("cookieUserName", username, { expires: 10 });
+                $.cookie("cookiePassword", password, { expires: 10 });
+
+            }
+            var param = "username="+username+"&password="+password;
             $.ajax({
-                url : '../first', //调用servelet页面
+                url : 'test.jsp', //调用servelet页面
                 data: param,
                 type : "GET",
                 dataType : "Text",
                 success : function(message){
                     $("#returnMsg").html(message);
+                    $("#userMenu").toggle();
+                    $('#modal-container-964516').modal('hide');
+                    $("#modal-964516").toggle();
+                    alert("username:  "+<%=session.getAttribute("username")%>)
                 },
                 error : function(){
                     $("#returnMsg").html("请求失败");
@@ -69,14 +94,17 @@
                         <li>
                             <a href="#">网站设计</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                        <li>
+                            <a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>
+                        </li>
+                        <li id="userMenu" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">UserName<strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Action</a>
+                                    <a href="#">用户资料</a>
                                 </li>
                                 <li>
-                                    <a href="#">Another action</a>
+                                    <a href="#">用户退出</a>
                                 </li>
                                 <li>
                                     <a href="#">Something else here</a>
@@ -97,9 +125,44 @@
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
                             <input class="form-control" type="text" />
-                        </div> <button type="submit" class="btn btn-default">Submit</button>
+                        </div> <button type="type" class="btn btn-default" >Submit</button>
                     </form>
-
+                    <!--登陆弹出框-->
+                    <div class="modal fade" id="modal-container-964516" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        用户登陆
+                                    </h4>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <div class="modal-body">
+                                            <form role="form" id="userLogonForm"  >
+                                                <label class="label-danger" id="returnMsg">错误信息</label>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1"></label><input class="form-control" id="exampleInputEmail1" type="text" placeholder="邮箱地址"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1"></label><input class="form-control" id="exampleInputPassword1" type="password" placeholder="密码"/>
+                                                </div>
+                                                <div class="checkbox ">
+                                                    <label><input type="checkbox" id="checkRememberBox" value="12"/> Check me out</label>
+                                                </div> <button type="button" class="btn btn-primary" onclick="userLogonJS();">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </nav>
@@ -159,18 +222,6 @@
         <!--user logon-->
         <div class="col-md-3">
             <h4>商家登陆</h4>
-            <form role="form" id="userLogonForm"  >
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label><input class="form-control" id="exampleInputEmail1" type="email" />
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label><input class="form-control" id="exampleInputPassword1" type="password" />
-                </div>
-                <div class="checkbox ">
-                    <label><input type="checkbox" id="checkRememberBox" value="12"/> Check me out</label>
-                </div> <button type="button" class="btn btn-primary" onclick="userLogonJS();">Submit</button>
-                <label class="label-success" id="returnMsg"></label>
-            </form>
         </div>
 
     </div>
@@ -188,10 +239,10 @@
         <div class="col-md-9 column">
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active" id="home">1</div>
-                <div class="tab-pane" id="profile">2</div>
-                <div class="tab-pane" id="messages">3</div>
-                <div class="tab-pane" id="settings">4s</div>
+                <div class="tab-pane active" id="home">搜索条件</div>
+                <div class="tab-pane" id="profile">搜索条件</div>
+                <div class="tab-pane" id="messages">搜索条件</div>
+                <div class="tab-pane" id="settings">搜索条件</div>
             </div>
         </div>
     </div>
@@ -205,7 +256,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img alt="300x200" src="http://lorempixel.com/600/200/people" />
+                        <img alt="300x200" src="../img/1.jpg" />
                         <div class="caption">
                             <h3>
                                 Thumbnail label
@@ -221,7 +272,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img alt="300x200" src="http://lorempixel.com/600/200/city" />
+                        <img alt="300x200" src="../img/2.jpg" />
                         <div class="caption">
                             <h3>
                                 Thumbnail label
@@ -237,7 +288,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img alt="300x200" src="http://lorempixel.com/600/200/sports" />
+                        <img alt="300x200" src="../img/3.jpg" />
                         <div class="caption">
                             <h3>
                                 Thumbnail label
