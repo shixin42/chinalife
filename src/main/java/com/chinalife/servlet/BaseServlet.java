@@ -21,5 +21,5 @@ public abstract class BaseServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-    abstract public void processRequest(HttpServletRequest request, HttpServletResponse response);
+    abstract public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

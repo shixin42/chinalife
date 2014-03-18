@@ -9,7 +9,7 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
+
     <context-param>
         <param-name>db.config.name</param-name>
         <param-value>db_config.xml</param-value>
@@ -22,8 +22,34 @@
         <param-name>db.max.total</param-name>
         <param-value>100</param-value>
     </context-param>
-    
+
     <listener>
         <listener-class>com.chinalife.listener.SServletContextListener</listener-class>
     </listener>
+
+    <filter>
+        <filter-name>request.encoding.filter</filter-name>
+        <filter-class>com.chinalife.filter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>request.encoding.filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.chinalife.servlet.RegisterServlet</servlet-class>
+        <init-param>
+            <param-name>success</param-name>
+            <param-value>/html/main.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>faild</param-name>
+            <param-value>/html/mail.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
 </web-app>

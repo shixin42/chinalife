@@ -11,7 +11,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <log4j_path>/Users/ishikin/soft/apache-tomcat-7.0.52/logs</log4j_path>
+        <log4j_path>/home/shixin/soft/apache-tomcat-7.0.52/logs</log4j_path>
         <log4j_level>INFO</log4j_level>
         <db_user>shixin</db_user>
         <db_password>shixin</db_password>
@@ -52,16 +52,6 @@
     </profiles>
 
     <dependencies>
-        <dependency>
-            <groupId>com.shixin</groupId>
-            <artifactId>shixin-dal</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.shixin</groupId>
-            <artifactId>shixin-util</artifactId>
-            <version>0.0.1</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
