@@ -4,6 +4,8 @@ import com.chinalife.dal.DAOException;
 import com.chinalife.dal.DAOFacade;
 import com.chinalife.dao.UserDAO;
 import com.chinalife.pojo.Error;
+import com.chinalife.pojo.ErrorCode;
+import com.chinalife.pojo.User;
 import com.chinalife.user.UserCategory;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
@@ -44,18 +46,18 @@ public class RegisterServlet extends BaseServlet {
             Long userId = DAOFacade.getDAO(UserDAO.class).queryUserByNickname(userNickname);
             if (userId != null) {
                 Error error = new Error();
-                error.setMessage("nickname " + userNickname + " exists.");
+                error.addErrorInfo(ErrorCode.DuplicateUserNicknameError);
 
-                request.setAttribute("error", error);
+                request.setAttribute("Error", error);
                 request.getRequestDispatcher(this.failAction).forward(request, response);
             }
 
             userId = DAOFacade.getDAO(UserDAO.class).queryUserByEmail(userEmail);
             if (userId != null) {
                 Error error = new Error();
-                error.setMessage("email " + userEmail + " exists.");
+                error.addErrorInfo(ErrorCode.DuplicateUserEmailError);
 
-                request.setAttribute("error", error);
+                request.setAttribute("Error", error);
                 request.getRequestDispatcher(this.failAction).forward(request, response);
             }
 
@@ -63,10 +65,16 @@ public class RegisterServlet extends BaseServlet {
                     category.toString().toUpperCase(), new Timestamp(System.currentTimeMillis()));
             logger.info("Successful create user " + userId);
 
+            User user = new User();
+            user.setId(userId);
+            user.setNickname(userNickname);
+            user.setEmail(userEmail);
+
             HttpSession session = request.getSession();
-            session.setAttribute("user_id", userId);
+            session.setAttribute("User", user);
 
             request.getRequestDispatcher(this.successAction).forward(request, response);
+
         } catch (DAOException e) {
             logger.error("Failed query db:", e);
         }
