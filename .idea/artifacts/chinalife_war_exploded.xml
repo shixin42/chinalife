@@ -8,8 +8,6 @@
           <element id="module-output" name="chinalife" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: com.shixin:shixin-dal:0.0.1" />
-          <element id="library" level="project" name="Maven: com.shixin:shixin-util:0.0.1" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.2" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.26" />
