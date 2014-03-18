@@ -35,9 +35,9 @@
         <filter-name>request.encoding.filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
+
     <servlet>
-        <servlet-name>register</servlet-name>
+        <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.chinalife.servlet.RegisterServlet</servlet-class>
         <init-param>
             <param-name>success</param-name>
@@ -48,8 +48,25 @@
             <param-value>/html/mail.jsp</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.chinalife.servlet.LoginServlet</servlet-class>
+        <init-param>
+            <param-name>success</param-name>
+            <param-value>/html/main.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>faild</param-name>
+            <param-value>/html/mail.jsp</param-value>
+        </init-param>
+    </servlet>
+
     <servlet-mapping>
-        <servlet-name>register</servlet-name>
+        <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>com.chinalife.servlet.LoginServlet</url-pattern>
     </servlet-mapping>
 </web-app>

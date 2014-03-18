@@ -26,4 +26,10 @@ public interface UserDAO {
     @SQLControl(returnAotuGeneratedId = true)
     @SQL("insert into user(user_nickname,user_pwd,user_email,user_category,create_time) values (?,?,?,?,?)")
     Long createUser(String nickname, String pwd, String email, String category, Timestamp createTime) throws DAOException;
+
+    @Table("user")
+    @SQL("select user_id from user where user_nickname=? and user_pwd=?")
+    Long login(String nickname, String pwd) throws DAOException;
+
+
 }
