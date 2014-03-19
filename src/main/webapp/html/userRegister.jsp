@@ -24,54 +24,62 @@
 <%@ include file="header.jsp"%>
 <div class="container">
     <div class="row clearfix">
+        <div class="col-md-1">
+
+        </div>
         <div class="col-md-5">
             <div class="modal-body">
                 <form role="form" id="userLogonForm" class="form-horizontal"  action="../register" method="post">
                     <div class="form-group">
-                        <label for="user_nickname" class="control-label col-md-2">用户名</label>
-                        <div class="col-md-10">
-                            <input type="email" class="form-control" id="user_nickname" placeholder="请输入用户名">
+                        <label for="user_nickname" class="control-label col-md-4">用户名</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="user_nickname" placeholder="请输入用户名">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="user_email" class="control-label col-md-2">邮箱地址</label>
-                        <div class="col-md-10">
+                        <label for="user_email" class="control-label col-md-4">邮箱地址</label>
+                        <div class="col-md-8">
                             <input type="email" class="form-control" id="user_email" placeholder="请输入邮箱地址">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="user_pwd" class="control-label col-md-2">密码</label>
-                        <div class="col-md-10">
+                        <label for="user_pwd" class="control-label col-md-4">密码</label>
+                        <div class="col-md-8">
                             <input type="password" class="form-control" id="user_pwd" placeholder="请输入密码">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="userPasswordAgain" class="control-label">密码确认</label>
-                        <div class="col-sm-10">
+                        <label for="userPasswordAgain" class="control-label col-md-4">密码确认</label>
+                        <div class="col-md-8">
                             <input type="password" class="form-control" id="userPasswordAgain" placeholder="请再输入一次">
                         </div>
                     </div>
                     <div class="radio form-horizontal">
-                        <div class="radio">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
                             <label>
                                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
                                 商家用户
                             </label>
                         </div>
-                        <div class="radio">
+                        <div class="col-md-4">
                             <label>
                                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                 个人用户
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default btn-lg">注册用户</button>
+                    <div class="form-group">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-default btn-lg">注册用户</button>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="col-md-5">
-        </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-6"></div>
     </div>
 </div>
 </body>

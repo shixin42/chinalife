@@ -37,9 +37,11 @@ public class RegisterServlet extends BaseServlet {
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("RegisterServlet processRequest");
         String userNickname = request.getParameter("user_nickname");
         String userEmail = request.getParameter("user_email");
         String userPwd = request.getParameter("user_pwd");
+        logger.info("Request Parameter:"+userNickname+":"+userEmail+":"+userPwd);
         UserCategory category = UserCategory.CUSTOMER;
 
         try {
