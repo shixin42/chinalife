@@ -34,8 +34,7 @@
 <%@ include file="header.jsp"%>
 <div class="container">
     <div class="row clearfix">
-        <div class="col-md-6"></div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="modal-body">
                 <form role="form" id="userLogonForm"  action="../login" method="post">
                     <label class="label-danger" id="returnMsg">错误信息<%=session.getAttribute("User")%></label>
@@ -50,6 +49,8 @@
                     </div> <button type="submit" class="btn btn-primary" onclick="userLogonJS();">Submit</button>
                 </form>
             </div>
+        </div>
+        <div class="col-md-5">
         </div>
         <div class="col-md-2"></div>
     </div>
