@@ -48,8 +48,8 @@
             <param-value>/html/main.jsp</param-value>
         </init-param>
         <init-param>
-            <param-name>faild</param-name>
-            <param-value>/html/mail.jsp</param-value>
+            <param-name>fail</param-name>
+            <param-value>/html/main.jsp</param-value>
         </init-param>
     </servlet>
     <servlet>
@@ -60,8 +60,8 @@
             <param-value>/html/main.jsp</param-value>
         </init-param>
         <init-param>
-            <param-name>faild</param-name>
-            <param-value>/html/mail.jsp</param-value>
+            <param-name>fail</param-name>
+            <param-value>/html/main.jsp</param-value>
         </init-param>
     </servlet>
 
@@ -71,6 +71,6 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>com.chinalife.servlet.LoginServlet</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
 </web-app>

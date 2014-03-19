@@ -19,20 +19,20 @@
     <script type="application/javascript" language="JavaScript">
         $(function() {
             //初始化页面，查看cookie用户名和密码情况。
-            var name = unescape($.cookie("cookieUserName"));
-            var pwd = unescape($.cookie("cookiePassword"));
-            $("#userMenu").toggle();
-            if (name == "undefined" ||  pwd == "undefined")
-            {
-                //alert("af"+name+":"+pwd);
-            }
-            else
-            {
-                $("#exampleInputEmail1").val(name);
-                $("#exampleInputPassword1").val(pwd);
-            }
+//            var name = unescape($.cookie("cookieUserName"));
+//            var pwd = unescape($.cookie("cookiePassword"));
+//            $("#userMenu").toggle();
+//            if (name == "undefined" ||  pwd == "undefined")
+//            {
+//                //alert("af"+name+":"+pwd);
+//            }
+//            else
+//            {
+//                $("#exampleInputEmail1").val(name);
+//                $("#exampleInputPassword1").val(pwd);
+//            }
         });
-        function userLogonJS()
+        /*function userLogonJS()
         {
             var username = escape($("#exampleInputEmail1").val());
             var password = escape($("#exampleInputPassword1").val());
@@ -41,11 +41,10 @@
             {
                 $.cookie("cookieUserName", username, { expires: 10 });
                 $.cookie("cookiePassword", password, { expires: 10 });
-
             }
             var param = "username="+username+"&password="+password;
             $.ajax({
-                url : 'test.jsp', //调用servelet页面
+                url : '../login', //调用servelet页面
                 data: param,
                 type : "GET",
                 dataType : "Text",
@@ -54,13 +53,12 @@
                     $("#userMenu").toggle();
                     $('#modal-container-964516').modal('hide');
                     $("#modal-964516").toggle();
-                    alert("username:  "+<%=session.getAttribute("username")%>)
                 },
-                error : function(){
-                    $("#returnMsg").html("请求失败");
+                error : function(message){
+                    $("#returnMsg").html(message.val()+":cc");
                 }
             })
-        }
+        }*/
     </script>
     <style>
 

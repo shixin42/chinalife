@@ -47,5 +47,75 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <div class="panel panel-default panel-primary">
+                <div class="panel-heading">房屋出售</div>
+                <div class="panel-body">
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 column">
+            <div class="tabbable" id="tabs-253394">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#panel-908308" data-toggle="tab">中介</a>
+                    </li>
+                    <li>
+                        <a href="#panel-175615" data-toggle="tab">个人</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="panel-908308">
+                        <div class="col-md-12 column">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img alt="300x200" src="../img/4.jpg"/>
+                                        <div class="caption">
+                                            <h4>
+                                                Thumbnail label
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img alt="300x200" src="../img/5.jpg" />
+                                        <div class="caption">
+                                            <h4>
+                                                Thumbnail label
+                                            </h4>
+                                            <p>
+                                                价格
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img alt="300x200" src="../img/6.jpg" />
+                                        <div class="caption">
+                                            <h4>
+                                                Thumbnail label
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="panel-175615">
+                        <p>
+                            Howdy, I'm in Section 2.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

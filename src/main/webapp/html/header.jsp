@@ -33,11 +33,13 @@
                         <li>
                             <a href="#">网站设计</a>
                         </li>
-                        <li>
-                            <a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>
+                        <li id="userLogon">
+                            <%--<a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>--%>
+                            <a href="userLogon.jsp">用户登陆</a>
                         </li>
                         <li id="userMenu" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">UserName<strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=session.getAttribute("User")%>
+                                <strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#">用户资料</a>
@@ -46,17 +48,7 @@
                                     <a href="#">用户退出</a>
                                 </li>
                                 <li>
-                                    <a href="#">Something else here</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Separated link</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">One more separated link</a>
+                                    <a href="#">进入我的店铺</a>
                                 </li>
                             </ul>
                         </li>
@@ -67,7 +59,7 @@
                         </div> <button type="type" class="btn btn-default" >Submit</button>
                     </form>
                     <!--登陆弹出框-->
-                    <div class="modal fade" id="modal-container-964516" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <%--<div class="modal fade" id="modal-container-964516" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -101,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
 
             </nav>

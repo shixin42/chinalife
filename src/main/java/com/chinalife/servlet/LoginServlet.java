@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Created by shixin on 3/18/14.
@@ -28,16 +29,16 @@ public class LoginServlet extends BaseServlet {
     public void init() {
         this.successAction = getInitParameter("success");
         this.failAction = getInitParameter("fail");
-
         Validate.notEmpty(successAction, "Must define success action");
         Validate.notEmpty(failAction, "Must define fail action");
+        logger.info("loginServlet after validate Init");
     }
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nickname = request.getParameter("user_nickname");
         String password = request.getParameter("user_pwd");
-
+        logger.info("loginServlet processRequest:"+nickname+":"+password);
         try {
             Long userId = DAOFacade.getDAO(UserDAO.class).login(nickname, password);
             if (null == userId) {
