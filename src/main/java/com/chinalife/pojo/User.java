@@ -1,9 +1,11 @@
 package com.chinalife.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by shixin on 3/18/14.
  */
-public class User {
+public class User implements Serializable {
     private Long id;
     private String nickname;
     private String email;
@@ -30,5 +32,11 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void update(User user) {
+        this.id = user.getId();
+        this.nickname = user.getNickname();
+        this.email = user.getEmail();
     }
 }
