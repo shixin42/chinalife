@@ -3,7 +3,6 @@ package com.chinalife.servlet;
 import com.chinalife.dal.DAOException;
 import com.chinalife.dal.DAOFacade;
 import com.chinalife.dao.UserDAO;
-import com.chinalife.pojo.Error;
 import com.chinalife.pojo.ErrorCode;
 import com.chinalife.pojo.User;
 import com.chinalife.user.UserCategory;
@@ -23,60 +22,51 @@ import java.sql.Timestamp;
 public class RegisterServlet extends BaseServlet {
     private static final Logger logger = Logger.getLogger(RegisterServlet.class);
 
-    private String successAction;
-    private String failAction;
-
     @Override
-    public void init() {
-        this.successAction = getInitParameter("success");
-        this.failAction = getInitParameter("fail");
-
-        Validate.notEmpty(successAction, "Must define success action");
-        Validate.notEmpty(failAction, "Must define fail action");
-    }
-
-    @Override
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("RegisterServlet processRequest");
-        String userNickname = request.getParameter("user_nickname");
-        String userEmail = request.getParameter("user_email");
-        String userPwd = request.getParameter("user_pwd");
-        logger.info("Request Parameter:"+userNickname+":"+userEmail+":"+userPwd);
-        UserCategory category = UserCategory.CUSTOMER;
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nickname = getParam(request, "nickname");
+        String email = getParam(request, "email");
+        String password = getParam(request, "password");
+        String category = request.getParameter("category");
+        UserCategory userCategory = UserCategory.valueOf(category.toUpperCase());
+        Validate.notNull(userCategory, "Invalid category value:" + category);
 
         try {
-            Long userId = DAOFacade.getDAO(UserDAO.class).queryUserByNickname(userNickname);
+            //Check nickname
+            Long userId = DAOFacade.getDAO(UserDAO.class).queryUserByNickname(nickname);
             if (userId != null) {
-                Error error = new Error();
-                error.addErrorInfo(ErrorCode.DuplicateUserNicknameError);
+                logger.error("Duplicate nickname.");
+                createError(ErrorCode.DuplicateUserNicknameError, request);
+                getFailureDispatcher(request).forward(request, response);
+                return;
 
-                request.setAttribute("Error", error);
-                request.getRequestDispatcher(this.failAction).forward(request, response);
             }
 
-            userId = DAOFacade.getDAO(UserDAO.class).queryUserByEmail(userEmail);
+            //Check email
+            userId = DAOFacade.getDAO(UserDAO.class).queryUserByEmail(email);
             if (userId != null) {
-                Error error = new Error();
-                error.addErrorInfo(ErrorCode.DuplicateUserEmailError);
-
-                request.setAttribute("Error", error);
-                request.getRequestDispatcher(this.failAction).forward(request, response);
+                logger.error("Duplicate email.");
+                createError(ErrorCode.DuplicateUserEmailError, request);
+                getFailureDispatcher(request).forward(request, response);
+                return;
             }
 
-            userId = DAOFacade.getDAO(UserDAO.class).createUser(userNickname, userPwd, userEmail,
-                    category.toString().toUpperCase(), new Timestamp(System.currentTimeMillis()));
+            //Register
+            userId = DAOFacade.getDAO(UserDAO.class).createUser(nickname, password, email,
+                    category.toString(), new Timestamp(System.currentTimeMillis()));
+
             logger.info("Successful create user " + userId);
 
+            //Save to session
             User user = new User();
             user.setId(userId);
-            user.setNickname(userNickname);
-            user.setEmail(userEmail);
+            user.setNickname(nickname);
+            user.setEmail(email);
 
             HttpSession session = request.getSession();
             session.setAttribute("User", user);
 
-            request.getRequestDispatcher(this.successAction).forward(request, response);
-
+            getSuccessDispatcher(request).forward(request, response);
         } catch (DAOException e) {
             logger.error("Failed query db:", e);
         }

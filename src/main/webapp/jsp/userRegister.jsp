@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
@@ -17,11 +18,10 @@
     <script src="../js/jquery.cookie.js" type="text/javascript"></script>
     <script type="application/javascript" language="JavaScript">
     </script>
-
 </head>
 <body>
 <!--navigation for top area-->
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-1">
@@ -29,27 +29,40 @@
         </div>
         <div class="col-md-5">
             <div class="modal-body">
-                <form role="form" id="userLogonForm" class="form-horizontal"  action="../register" method="post">
+                <form role="form" id="userLogonForm" class="form-horizontal" action="/chinalife/register" method="post">
+                    <c:if test="${requestScope.error != null}">
+                        <c:forEach items="${requestScope.error.errorInfo}" var="entry">
+                            <h1>${entry.value}</h1>
+                        </c:forEach>
+                    </c:if>
+
                     <div class="form-group">
                         <label for="user_nickname" class="control-label col-md-4">用户名</label>
+
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="user_nickname" placeholder="请输入用户名">
+                            <input type="text" class="form-control" id="user_nickname" name="nickname"
+                                   placeholder="请输入用户名">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="user_email" class="control-label col-md-4">邮箱地址</label>
+
                         <div class="col-md-8">
-                            <input type="email" class="form-control" id="user_email" placeholder="请输入邮箱地址">
+                            <input type="email" class="form-control" id="user_email" name="email"
+                                   placeholder="请输入邮箱地址">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="user_pwd" class="control-label col-md-4">密码</label>
+
                         <div class="col-md-8">
-                            <input type="password" class="form-control" id="user_pwd" placeholder="请输入密码">
+                            <input type="password" class="form-control" id="user_pwd" name="password"
+                                   placeholder="请输入密码">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="userPasswordAgain" class="control-label col-md-4">密码确认</label>
+
                         <div class="col-md-8">
                             <input type="password" class="form-control" id="userPasswordAgain" placeholder="请再输入一次">
                         </div>
@@ -58,13 +71,13 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <input type="radio" name="category" id="optionsRadios1" value="business" checked>
                                 商家用户
                             </label>
                         </div>
                         <div class="col-md-4">
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <input type="radio" name="category" id="optionsRadios2" value="customer">
                                 个人用户
                             </label>
                         </div>
