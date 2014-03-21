@@ -31,11 +31,9 @@
             <div class="modal-body">
                 <form role="form" id="userLogonForm" class="form-horizontal" action="/chinalife/register" method="post">
                     <c:if test="${requestScope.error != null}">
-                        <div class="form-group">
-                            <c:forEach items="${requestScope.error.errorInfo}" var="entry">
-                                <label for="error_message" class="control-label col-md-4">${entry.value}</label>
-                            </c:forEach>
-                        </div>
+                        <c:forEach items="${requestScope.error.errorInfo}" var="entry">
+                            <h1>${entry.value}</h1>
+                        </c:forEach>
                     </c:if>
 
                     <div class="form-group">
