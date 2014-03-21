@@ -26,7 +26,7 @@
         <div class="col-md-3">
             <%@ include file="left.jsp"%>
         </div>
-        <div class="col-md-9"></div>
+        <div class="col-md-9">user management</div>
     </div>
 </div>
 

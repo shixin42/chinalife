@@ -42,7 +42,7 @@
                                 <strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">用户资料</a>
+                                    <a href="/chinalife/jsp/manage/userManage.jsp">用户资料</a>
                                 </li>
                                 <li>
                                     <a href="#">用户退出</a>
