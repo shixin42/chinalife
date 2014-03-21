@@ -86,12 +86,16 @@ class DAOInvocationHandler implements InvocationHandler {
         }
     }
 
+    //TODO: Dont create daoMethod every time.
     private synchronized DAOMethod getDAOMethod(Method method, Object[] objects) {
+        /*
         DAOMethod daoMethod = methodToDAOMethodMap.get(method);
         if (null == daoMethod) {
             daoMethod = new DAOMethod(method, objects);
             methodToDAOMethodMap.put(method, daoMethod);
         }
         return daoMethod;
+        */
+        return new DAOMethod(method, objects);
     }
 }
