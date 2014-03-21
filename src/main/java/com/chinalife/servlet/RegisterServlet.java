@@ -34,6 +34,8 @@ public class RegisterServlet extends BaseServlet {
         try {
             //Check nickname
             Long userId = DAOFacade.getDAO(UserDAO.class).queryUserByNickname(nickname);
+            logger.info("nickname" + nickname);
+            logger.info("userId" + userId);
             if (userId != null) {
                 logger.error("Duplicate nickname.");
                 createError(ErrorCode.DuplicateUserNicknameError, request);
