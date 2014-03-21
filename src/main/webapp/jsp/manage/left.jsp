@@ -11,7 +11,7 @@
     <a href="userManage.jsp" class="list-group-item active">账户信息</a>
     <a href="#" class="list-group-item">积分管理</a>
     <div class="panel-heading"><strong>租售房管理</strong></div>
-    <a href="houseSellingAdd.html" class="list-group-item">发布售房信息</a>
+    <a href="/chinalife/jsp/manage/houseSellingAdd.jsp" class="list-group-item">发布售房信息</a>
     <a href="#" class="list-group-item">查询售房信息</a>
     <div class="panel-heading"><strong>生活服务管理</strong></div>
     <a href="#" class="list-group-item">发布生活服务信息</a>

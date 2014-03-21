@@ -10,11 +10,11 @@
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-    <script src="../js/jquery-1.10.1.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../js/jquery.cookie.js" type="text/javascript"></script>
+    <link href="/chinalife/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/chinalife/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+    <script src="/chinalife/js/jquery-1.10.1.js" type="text/javascript"></script>
+    <script src="/chinalifejs/bootstrap.js" type="text/javascript"></script>
+    <script src="/chinalife/js/jquery.cookie.js" type="text/javascript"></script>
     <script type="application/javascript" language="JavaScript">
         $(function()
         {

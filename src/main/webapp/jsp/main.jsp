@@ -11,11 +11,11 @@
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-    <script src="../js/jquery-1.10.1.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../js/jquery.cookie.js" type="text/javascript"></script>
+    <link href="/chinalife/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/chinalife/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+    <script src="/chinalife/js/jquery-1.10.1.js" type="text/javascript"></script>
+    <script src="/chinalife/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/chinalife/js/jquery.cookie.js" type="text/javascript"></script>
     <script type="application/javascript" language="JavaScript">
         $(function() {
             //初始化页面，查看cookie用户名和密码情况。
@@ -82,7 +82,7 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="../img/1.jpg" />
+                        <img alt="" src="/chinalife/img/1.jpg" />
                         <div class="carousel-caption">
                             <h4>
                                 First Thumbnail label
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="../img/2.jpg" />
+                        <img alt="" src="/chinalife/img/2.jpg" />
                         <div class="carousel-caption">
                             <h4>
                                 Second Thumbnail label
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="../img/3.jpg" />
+                        <img alt="" src="/chinalife/img/3.jpg" />
                         <div class="carousel-caption">
                             <h4>
                                 Third Thumbnail label
@@ -135,7 +135,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <img alt="300x200" src="../img/1.jpg" />
+                                <img alt="300x200" src="/chinalife/img/1.jpg" />
                                 <div class="caption">
                                     <h3>
                                         Thumbnail label
@@ -151,7 +151,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <img alt="300x200" src="../img/2.jpg" />
+                                <img alt="300x200" src="/chinalife/img/2.jpg" />
                                 <div class="caption">
                                     <h3>
                                         Thumbnail label
@@ -167,7 +167,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <img alt="300x200" src="../img/3.jpg" />
+                                <img alt="300x200" src="/chinalife/img/3.jpg" />
                                 <div class="caption">
                                     <h3>
                                         Thumbnail label
@@ -193,7 +193,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img alt="300x200" src="../img/1.jpg" />
+                        <img alt="300x200" src="/chinalife/img/1.jpg" />
                         <div class="caption">
                             <h3>
                                 Thumbnail label
@@ -209,7 +209,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img alt="300x200" src="../img/2.jpg" />
+                        <img alt="300x200" src="/chinalife/img/2.jpg" />
                         <div class="caption">
                             <h3>
                                 Thumbnail label
@@ -225,7 +225,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img alt="300x200" src="../img/3.jpg" />
+                        <img alt="300x200" src="/chinalife/img/3.jpg" />
                         <div class="caption">
                             <h3>
                                 Thumbnail label
