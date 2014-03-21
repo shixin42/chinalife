@@ -1,4 +1,4 @@
-package com.chinalife.pojo;
+package com.chinalife.user;
 
 import java.io.Serializable;
 

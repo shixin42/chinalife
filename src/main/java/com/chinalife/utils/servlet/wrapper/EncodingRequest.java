@@ -1,4 +1,4 @@
-package com.chinalife.wrapper;
+package com.chinalife.utils.servlet.wrapper;
 
 
 import org.apache.log4j.Logger;

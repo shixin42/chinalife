@@ -1,19 +1,17 @@
 package com.chinalife.servlet;
 
-import com.chinalife.dal.DAOException;
 import com.chinalife.dal.DAOFacade;
 import com.chinalife.dao.UserDAO;
-import com.chinalife.pojo.ErrorCode;
-import com.chinalife.pojo.User;
+import com.chinalife.user.User;
 import com.chinalife.user.UserCategory;
+import com.chinalife.utils.servlet.BaseServlet;
+import com.chinalife.utils.servlet.pojo.ErrorCode;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.sql.Timestamp;
 
 /**
@@ -23,7 +21,7 @@ public class RegisterServlet extends BaseServlet {
     private static final Logger logger = Logger.getLogger(RegisterServlet.class);
 
     @Override
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String nickname = getParam(request, "nickname");
         String email = getParam(request, "email");
         String password = getParam(request, "password");
@@ -38,7 +36,7 @@ public class RegisterServlet extends BaseServlet {
             logger.info("userId" + userId);
             if (userId != null) {
                 logger.error("Duplicate nickname.");
-                createError(ErrorCode.DuplicateUserNicknameError, request);
+                addError(request, ErrorCode.DuplicateUserNicknameError);
                 getFailureDispatcher(request).forward(request, response);
                 return;
 
@@ -48,7 +46,7 @@ public class RegisterServlet extends BaseServlet {
             userId = DAOFacade.getDAO(UserDAO.class).queryUserByEmail(email);
             if (userId != null) {
                 logger.error("Duplicate email.");
-                createError(ErrorCode.DuplicateUserEmailError, request);
+                addError(request, ErrorCode.DuplicateUserEmailError);
                 getFailureDispatcher(request).forward(request, response);
                 return;
             }
@@ -65,12 +63,11 @@ public class RegisterServlet extends BaseServlet {
             user.setNickname(nickname);
             user.setEmail(email);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("User", user);
-
+            addAttribute(request, Scope.SESSION, "user", user);
             getSuccessDispatcher(request).forward(request, response);
-        } catch (DAOException e) {
-            logger.error("Failed query db:", e);
+        } catch (Exception e) {
+            logger.error(e);
+            throw new ServletException(e);
         }
     }
 }

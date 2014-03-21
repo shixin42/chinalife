@@ -1,6 +1,6 @@
-package com.chinalife.filter;
+package com.chinalife.utils.servlet.filter;
 
-import com.chinalife.wrapper.EncodingRequest;
+import com.chinalife.utils.servlet.wrapper.EncodingRequest;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

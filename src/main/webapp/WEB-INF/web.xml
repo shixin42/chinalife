@@ -19,12 +19,12 @@
     </context-param>
 
     <listener>
-        <listener-class>com.chinalife.listener.SServletContextListener</listener-class>
+        <listener-class>com.chinalife.utils.servlet.listener.SServletContextListener</listener-class>
     </listener>
 
     <filter>
         <filter-name>request.encoding.filter</filter-name>
-        <filter-class>com.chinalife.filter.EncodingFilter</filter-class>
+        <filter-class>com.chinalife.utils.servlet.filter.EncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>request.encoding.filter</filter-name>

@@ -1,4 +1,4 @@
-package com.chinalife.pojo;
+package com.chinalife.utils.servlet.pojo;
 
 /**
  * Created by shixin on 3/18/14.
@@ -17,7 +17,7 @@ public enum ErrorCode {
         this.description = description;
     }
 
-    public Integer getCode() {
+    public int getCode() {
         return code;
     }
 

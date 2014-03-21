@@ -30,6 +30,4 @@ public interface UserDAO {
     @Table("user")
     @SQL("select user_id from user where user_nickname=? and user_pwd=?")
     Long login(String nickname, String pwd) throws DAOException;
-
-
 }

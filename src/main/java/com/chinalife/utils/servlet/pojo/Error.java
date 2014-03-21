@@ -1,4 +1,4 @@
-package com.chinalife.pojo;
+package com.chinalife.utils.servlet.pojo;
 
 import java.io.Serializable;
 import java.util.HashMap;

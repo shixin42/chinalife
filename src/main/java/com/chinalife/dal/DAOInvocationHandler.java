@@ -1,7 +1,7 @@
 package com.chinalife.dal;
 
 import com.chinalife.dal.converter.ConverterFactory;
-import com.chinalife.util.TypeUtil;
+import com.chinalife.utils.TypeUtil;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 

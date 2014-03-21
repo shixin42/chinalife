@@ -1,4 +1,4 @@
-package com.chinalife.util;
+package com.chinalife.utils;
 
 import org.apache.commons.lang3.Validate;
 

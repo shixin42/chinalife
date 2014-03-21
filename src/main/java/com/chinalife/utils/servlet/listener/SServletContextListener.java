@@ -1,4 +1,4 @@
-package com.chinalife.listener;
+package com.chinalife.utils.servlet.listener;
 
 import com.chinalife.dal.DBAccesser;
 import org.apache.commons.lang3.StringUtils;
