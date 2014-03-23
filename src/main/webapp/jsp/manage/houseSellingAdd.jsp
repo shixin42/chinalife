@@ -6,25 +6,30 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="/chinalife/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="/chinalife/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-    <script src="/chinalife/js/jquery-1.10.1.js" type="text/javascript"></script>
-    <script src="/chinalife/js/bootstrap.js" type="text/javascript"></script>
-    <script src="/chinalife/js/jquery.cookie.js" type="text/javascript"></script>
+    <c:import url="/template/importedFiles.html" />
+    <link href="chinalife/css/demo_table.css" rel="stylesheet" type="text/css"/>
     <script type="application/javascript" language="JavaScript">
+        $(document).ready(function() {
+            $('#example').dataTable( {
+                "sPaginationType": "full_numbers",
+                "bProcessing": true,
+                "sAjaxSource": 'dataSource.txt'
+            } );
+        } );
     </script>
 </head>
 <body>
 <!--navigation for left area-->
-<%@ include file="../header.jsp"%>
+<%@ include file="/template/header.jsp"%>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-3">
-            <%@ include file="left.jsp"%>
+            <%@ include file="/template/left.jsp"%>
         </div>
         <div class="col-md-9">
             <div>
@@ -70,7 +75,7 @@
                             <div class="col-md-2"></div>
                         </div>
                         <div class="form-group">
-                            <!-- Prepended text-->
+                            <%--<!-- Prepended text-->--%>
                             <label class="col-md-2 control-label">户型</label>
                             <div class="col-md-6 controls">
                                 <div class="row">
@@ -103,62 +108,69 @@
                             </div>
                             <div class="col-md-4"></div>
                         </div>
-                    <div class="form-group">
-                        <!-- Text input-->
-                        <label class="col-md-2 control-label" for="inputForArea">面积</label>
-                        <div class="col-md-2 controls">
-                            <input placeholder="placeholder" class="form-control" id="inputForArea" type="text">
+                        <div class="form-group">
+                            <!-- Text input-->
+                            <label class="col-md-2 control-label" for="inputForArea">面积</label>
+                            <div class="col-md-2 controls">
+                                <input placeholder="placeholder" class="form-control" id="inputForArea" type="text">
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="control-label" for="inputForArea">平方米</label>
+                            </div>
+                            <div class="col-md-8"></div>
                         </div>
-                        <div class="col-xs-2">
-                            <label class="control-label" for="inputForArea">平方米</label>
+                        <div class="form-group">
+                            <!-- Text input-->
+                            <label class="col-md-2 control-label" for="inputForPrice">售价</label>
+                            <div class="col-md-2 controls">
+                                <input placeholder="placeholder" class="form-control" id="inputForPrice" type="text">
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="control-label" for="inputForPrice">万元</label>
+                            </div>
+                            <div class="col-md-8"></div>
                         </div>
-                        <div class="col-md-8"></div>
-                    </div>
-                    <div class="form-group">
-                        <!-- Text input-->
-                        <label class="col-md-2 control-label" for="inputForPrice">售价</label>
-                        <div class="col-md-2 controls">
-                            <input placeholder="placeholder" class="form-control" id="inputForPrice" type="text">
-                        </div>
-                        <div class="col-xs-2">
-                            <label class="control-label" for="inputForPrice">万元</label>
-                        </div>
-                        <div class="col-md-8"></div>
-                    </div>
-                    <div class="form-group">
-                        <!-- Textarea -->
-                        <label class="col-md-2 control-label" for="inputForDetail">描述</label>
-                        <div class="col-md-8 controls">
-                            <div class="textarea">
-                                <textarea  class="form-control" id="inputForDetail" rows="8"> </textarea>
+                        <div class="form-group">
+                            <!-- Textarea -->
+                            <label class="col-md-2 control-label" for="inputForDetail">描述</label>
+                            <div class="col-md-8 controls">
+                                <div class="textarea">
+                                    <textarea  class="form-control" id="inputForDetail" rows="8"> </textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <!-- Text input-->
-                        <label class="col-md-2 control-label" for="inputForContact">联系人</label>
-                        <div class="col-md-6 controls">
-                            <input placeholder="placeholder" class="form-control" id="inputForContact" type="text">
-                            <p class="help-block">Supporting help text</p>
+                        <div class="form-group">
+                            <!-- Text input-->
+                            <label class="col-md-2 control-label" for="inputForContact">联系人</label>
+                            <div class="col-md-6 controls">
+                                <input placeholder="placeholder" class="form-control" id="inputForContact" type="text">
+                                <p class="help-block">Supporting help text</p>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
-                        <div class="col-md-4"></div>
-                    </div>
-                    <div class="form-group">
-                        <!-- Text input-->
-                        <label class="col-md-2 control-label" for="inputForTel">联系电话</label>
-                        <div class="col-md-6 controls">
-                            <input placeholder="placeholder" class="form-control" id="inputForTel" type="text">
-                            <p class="help-block">Supporting help text</p>
+                        <div class="form-group">
+                            <!-- Text input-->
+                            <label class="col-md-2 control-label" for="inputForTel">联系电话</label>
+                            <div class="col-md-6 controls">
+                                <input placeholder="placeholder" class="form-control" id="inputForTel" type="text">
+                                <p class="help-block">Supporting help text</p>
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
-                        <div class="col-md-4"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">File Button</label>
-                        <div class="controls">
-                            <input class="input-file" id="fileInput" type="file">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">File Button</label>
+                            <div class="col-md-6 controls">
+                                <input class="input-file" id="fileInput" type="file">
+                            </div>
+                            <div class="col-md-4"></div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-6 controls">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
                 </form>
             </div>
         </div>

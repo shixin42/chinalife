@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -14,12 +15,12 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span>
                         <span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="./main.jsp">首页</a>
+                    <a class="navbar-brand" href="/chinalife/jsp/main.jsp">首页</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li id="houseBuying">
-                            <a href=" /chinalife/jsp/houseBuying.jsp">房屋租售</a>
+                            <a href="/chinalife/jsp/houseBuying.jsp">房屋租售</a>
                         </li>
                         <li id="lifeService">
                             <a href="/chinalife/jsp/lifeService.jsp">生活服务</a>
@@ -33,25 +34,32 @@
                         <li>
                             <a href="#">网站设计</a>
                         </li>
-                        <li id="userLogon">
-                            <%--<a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>--%>
-                            <a href="/chinalife/jsp/userLogon.jsp">用户登陆</a>
-                        </li>
-                        <li id="userMenu" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=session.getAttribute("User")%>
-                                <strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/chinalife/jsp/manage/userManage.jsp">用户资料</a>
+                        <c:choose>
+                            <c:when test="${sessionScope.user == null}">
+                                <li id="userLogon">
+                                        <%--<a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>--%>
+                                    <a href="/chinalife/jsp/userLogon.jsp">用户登陆</a>
                                 </li>
-                                <li>
-                                    <a href="#">用户退出</a>
+                            </c:when>
+                            <c:otherwise>
+                                <li id="userMenu" class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <c:out value="${sessionScope.user.getNickname()}">未登陆</c:out>
+                                        <strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/chinalife/jsp/manage/userManage.jsp">用户资料</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">用户退出</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">进入我的店铺</a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
-                                    <a href="#">进入我的店铺</a>
-                                </li>
-                            </ul>
-                        </li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">

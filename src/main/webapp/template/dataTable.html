@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>DataTables example</title>
+
+    <link href="../css/demo_table.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" language="javascript" src="../js/jquery-1.10.1.js"></script>
+    <script type="text/javascript" language="javascript" src="../js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#example').dataTable( {
+                "sPaginationType": "full_numbers",
+                "bProcessing": true
+                //"sAjaxSource": 'dataSource.txt'
+            } );
+            $('#example tbody tr').on('click', function () {
+//                var sTitle;
+//                var nTds = $('td', this);
+//                var sBrowser = $(nTds[1]).text();
+//                var sGrade = $(nTds[4]).text();
+//
+//                if ( sGrade == "A" )
+//                    sTitle =  sBrowser+' will provide a first class (A) level of CSS support.';
+//                else if ( sGrade == "C" )
+//                    sTitle = sBrowser+' will provide a core (C) level of CSS support.';
+//                else if ( sGrade == "X" )
+//                    sTitle = sBrowser+' does not provide CSS support or has a broken implementation. Block CSS.';
+//                else
+//                    sTitle = sBrowser+' will provide an undefined level of CSS support.';
+
+                alert("title");
+            } );
+        } );
+        var oTable;
+
+    </script>
+    <style type="text/css">
+        .dataTables_paginate {
+            float: right;
+            text-align: right;
+        }
+        .paging_full_numbers {
+            width: 400px;
+            height: 22px;
+            line-height: 22px;
+        }
+    </style>
+</head>
+<body id="dt_example" class="example_alt_pagination">
+<div id="container" class="container">
+<table class="table table-hover" id="example">
+<thead>
+<tr>
+    <th>Rendering engine</th>
+    <th>Browser</th>
+    <th>Platform(s)</th>
+    <th>Engine version</th>
+    <th>CSS grade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="gradeX">
+    <td>Trident</td>
+    <td>
+        Internet
+        Explorer
+        4.0
+    </td>
+    <td>Win 95+</td>
+    <td class="center">4</td>
+    <td class="center">X</td>
+</tr>
+<tr class="gradeC">
+    <td>Trident</td>
+    <td>Internet
+        Explorer 5.0</td>
+    <td>Win 95+</td>
+    <td class="center">5</td>
+    <td class="center">C</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+    <th>Rendering engine</th>
+    <th>Browser</th>
+    <th>Platform(s)</th>
+    <th>Engine version</th>
+    <th>CSS grade</th>
+</tr>
+</tfoot>
+</table>
+</div>
+</body>
+</html>

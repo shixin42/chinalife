@@ -6,15 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="/chinalife/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="/chinalife/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-    <script src="/chinalife/js/jquery-1.10.1.js" type="text/javascript"></script>
-    <script src="/chinalife/js/bootstrap.js" type="text/javascript"></script>
-    <script src="/chinalife/js/jquery.cookie.js" type="text/javascript"></script>
+    <c:import url="/template/importedFiles.html" />
     <script type="application/javascript" language="JavaScript">
         $(function()
         {
@@ -25,7 +22,7 @@
 </head>
 <body>
 <!--navigation for top area-->
-<%@ include file="header.jsp"%>
+<%@ include file="../template/header.jsp"%>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-3 column">
