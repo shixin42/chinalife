@@ -22,7 +22,7 @@
 </head>
 <body>
 <!--navigation for top area-->
-<%@ include file="../template/header.jsp"%>
+<%@ include file="../../template/header.jsp"%>
 this is lifeServicePage
 </body>
 </html>

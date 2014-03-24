@@ -17,7 +17,7 @@
 </head>
 <body>
 <!--navigation for top area-->
-<%@ include file="../template/header.jsp" %>
+<%@ include file="../../template/header.jsp" %>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-1">
