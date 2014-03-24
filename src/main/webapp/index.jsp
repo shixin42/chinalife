@@ -12,5 +12,10 @@
 </head>
 <body>
 Hi
+<form action="/chinalife/FileUpload" method="POST" enctype="multipart/form-data">
+    Note:<input type="text" name="note"><br>
+    File:<input type="file" name="upfile"><br>
+    <input type="submit" value="press">to upload the file.
+</form>
 </body>
 </html>
