@@ -20,10 +20,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li id="houseBuying">
-                            <a href="/chinalife/jsp/houseBuying.jsp">房屋租售</a>
+                            <a href="/chinalife/jsp/house/houseBuying.jsp">房屋租售</a>
                         </li>
                         <li id="lifeService">
-                            <a href="/chinalife/jsp/lifeService.jsp">生活服务</a>
+                            <a href="/chinalife/jsp/life/lifeService.jsp">生活服务</a>
                         </li>
                         <li id="lifeTips">
                             <a href="#" >生活贴士</a>
@@ -38,7 +38,7 @@
                             <c:when test="${sessionScope.user == null}">
                                 <li id="userLogon">
                                         <%--<a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>--%>
-                                    <a href="/chinalife/jsp/userLogon.jsp">用户登陆</a>
+                                    <a href="/chinalife/jsp/user/userLogon.jsp">用户登陆</a>
                                 </li>
                             </c:when>
                             <c:otherwise>

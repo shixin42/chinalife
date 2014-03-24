@@ -40,7 +40,7 @@
         </init-param>
         <init-param>
             <param-name>f</param-name>
-            <param-value>/jsp/userRegister.jsp</param-value>
+            <param-value>/jsp/user/userRegister.jsp</param-value>
         </init-param>
     </servlet>
     <servlet>
