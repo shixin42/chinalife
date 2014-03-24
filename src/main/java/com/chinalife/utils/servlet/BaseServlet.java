@@ -1,7 +1,9 @@
 package com.chinalife.utils.servlet;
 
+import com.chinalife.utils.servlet.listener.SServletContextListener;
 import com.chinalife.utils.servlet.pojo.Error;
 import com.chinalife.utils.servlet.pojo.ErrorCode;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 
@@ -37,6 +39,15 @@ public abstract class BaseServlet extends HttpServlet {
         logger.info("Failure action : " + failureAction);
     }
 
+    protected String getAppPath() {
+        return getServletContext().getRealPath("/");
+    }
+
+    protected ServletFileUpload getFileUpload() {
+        Object object = getServletContext().getAttribute(SServletContextListener.FILE_UPLOAD_KEY);
+        Validate.notNull(object, "Cant find fildUpload in application.");
+        return (ServletFileUpload) object;
+    }
 
     protected RequestDispatcher getSuccessDispatcher(HttpServletRequest request) {
         Validate.notEmpty(successAction, "Cant find success action.");
@@ -85,6 +96,10 @@ public abstract class BaseServlet extends HttpServlet {
 
     protected int getIntParam(HttpServletRequest request, String name) {
         return Integer.parseInt(getParam(request, name));
+    }
+
+    protected double getDoubleParam(HttpServletRequest request, String name) {
+        return Double.parseDouble(getParam(request, name));
     }
 
     private void logRequestParams(HttpServletRequest request) {

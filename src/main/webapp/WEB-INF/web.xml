@@ -17,6 +17,10 @@
         <param-name>db.max.total</param-name>
         <param-value>100</param-value>
     </context-param>
+    <context-param>
+        <param-name>temp.dir</param-name>
+        <param-value>/tmp</param-value>
+    </context-param>
 
     <listener>
         <listener-class>com.chinalife.utils.servlet.listener.SServletContextListener</listener-class>
@@ -56,6 +60,14 @@
         </init-param>
     </servlet>
     <servlet>
+        <servlet-name>HouseSaleAddServlet</servlet-name>
+        <servlet-class>com.chinalife.servlet.HouseSaleAddServlet</servlet-class>
+        <init-param>
+            <param-name>s</param-name>
+            <param-value>/jsp/main.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
         <servlet-name>FileUploadTest</servlet-name>
         <servlet-class>com.chinalife.servlet.TestFileUploadServlet</servlet-class>
     </servlet>
@@ -69,10 +81,14 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>HouseSaleAddServlet</servlet-name>
+        <url-pattern>/houseSaleAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>FileUploadTest</servlet-name>
         <url-pattern>/FileUpload</url-pattern>
     </servlet-mapping>
-    
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

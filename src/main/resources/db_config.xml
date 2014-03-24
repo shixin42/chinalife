@@ -9,5 +9,7 @@
     <tables>
         <table name="user" con_refs="chinalife"></table>
         <table name="user_info" con_refs="chinalife"></table>
+        <table name="house_sale" con_refs="chinalife"></table>
+        <table name="house_sale_picture" con_refs="chinalife"></table>
     </tables>
 </database>
