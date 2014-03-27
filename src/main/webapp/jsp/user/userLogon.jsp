@@ -28,12 +28,12 @@
 </head>
 <body>
 <!--navigation for top area-->
-<%@ include file="../../template/header.jsp"%>
+<%@ include file="/template/header.jsp"%>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-5">
             <div class="modal-body">
-                <form role="form" id="userLogonForm"  action="../login" method="post">
+                <form role="form" id="userLogonForm"  action="/chinalife/login" method="post">
                     <%--<label class="label-danger" id="returnMsg">错误信息<%=session.getAttribute("user")%></label>--%>
                     <div class="form-group">
                         <label for="user_nickname">用户名</label><input class="form-control" id="user_nickname" name="nickname" type="text" placeholder="邮箱地址"/>
