@@ -19,7 +19,7 @@
     </context-param>
     <context-param>
         <param-name>temp.dir</param-name>
-        <param-value>/tmp</param-value>
+        <param-value>D:\bin\apache-tomcat-7.0.52\tmp</param-value>
     </context-param>
 
     <listener>
@@ -56,7 +56,7 @@
         </init-param>
         <init-param>
             <param-name>f</param-name>
-            <param-value>/jsp/main.jsp</param-value>
+            <param-value>/jsp/user/userLogon.jsp</param-value>
         </init-param>
     </servlet>
     <servlet>

@@ -17,13 +17,17 @@
         {
             $("#lifeService").removeClass("active");
             $("#houseBuying").addClass("active");
+            $("#userLogonForm").validate({
+                rules: {
+                    nickname : "required",
+                    password : "required"
+                },
+                messages: {
+                    nickname: "you need to enter the status of the house",
+                    password : "you need to enter the status of the house"
+                }
+            })
         })
-        function userLogonJS()
-        {
-            var username = $("#exampleInputEmail1").val();
-            var password = $("#exampleInputPassword1").val();
-            $("#userLogonForm").submit();
-        }
     </script>
 </head>
 <body>
@@ -31,25 +35,10 @@
 <%@ include file="/template/header.jsp"%>
 <div class="container">
     <div class="row clearfix">
-        <div class="col-md-5">
-            <div class="modal-body">
-                <form role="form" id="userLogonForm"  action="/chinalife/login" method="post">
-                    <%--<label class="label-danger" id="returnMsg">错误信息<%=session.getAttribute("user")%></label>--%>
-                    <div class="form-group">
-                        <label for="user_nickname">用户名</label><input class="form-control" id="user_nickname" name="nickname" type="text" placeholder="邮箱地址"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="user_pwd">密码</label><input class="form-control" id="user_pwd" name="password" type="password" placeholder="密码"/>
-                    </div>
-                    <div class="checkbox ">
-                        <label><input type="checkbox" id="checkRememberBox" value="12"/> Check me out</label>
-                    </div> <button type="submit" class="btn btn-primary" onclick="userLogonJS();">Submit</button>
-                </form>
-            </div>
+        <div class="col-md-8">
+            <c:import url="/template/logon.jsp" />
         </div>
-        <div class="col-md-5">
-        </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 </body>

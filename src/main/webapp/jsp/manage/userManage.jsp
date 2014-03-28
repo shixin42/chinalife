@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title></title>
@@ -27,6 +28,7 @@
         <div class="col-md-9">
             <div>
                 <form class="form-horizontal">
+                    <fieldset>
                     <div id="legend" class="">
                         <legend class="">表单名</legend>
                     </div>
@@ -48,6 +50,7 @@
                         </div>
                         <div class="col-md-4"></div>
                     </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
