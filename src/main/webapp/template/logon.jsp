@@ -13,8 +13,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div style="display:none" id="errorAlert" class="alert alert-danger col-sm-12">12</div>
-            <form role="form" class="form-horizontal" id="userLogonForm"  action="/chinalife/login" enctype="multipart/form-data"
-                  method="post">
+            <form role="form" class="form-horizontal" id="userLogonForm"  action="/chinalife/login" method="post">
                 <label class="label-danger">
                     <c:if test="${requestScope.error != null}">
                         <c:forEach items="${requestScope.error.errorInfo}" var="entry">

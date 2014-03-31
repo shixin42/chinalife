@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="panel panel-info">
     <div class="panel-heading"><strong>用户管理</strong></div>
-    <a href="/chinalife/jsp/manage/userManage.jsp" class="list-group-item active">账户信息</a>
+    <a href="/chinalife/jsp/manage/userManage.jsp" class="list-group-item">账户信息</a>
     <a href="#" class="list-group-item">积分管理</a>
     <div class="panel-heading"><strong>租售房管理</strong></div>
     <a href="/chinalife/jsp/manage/houseSellingAdd.jsp" class="list-group-item">发布售房信息</a>

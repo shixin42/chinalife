@@ -17,16 +17,16 @@
         {
             $("#lifeService").removeClass("active");
             $("#houseBuying").addClass("active");
-            $("#userLogonForm").validate({
-                rules: {
-                    nickname : "required",
-                    password : "required"
-                },
-                messages: {
-                    nickname: "you need to enter the status of the house",
-                    password : "you need to enter the status of the house"
-                }
-            })
+//            $("#userLogonForm").validate({
+//                rules: {
+//                    nickname : "required",
+//                    password : "required"
+//                },
+//                messages: {
+//                    nickname: "you need to enter the status of the house",
+//                    password : "you need to enter the status of the house"
+//                }
+//            })
         })
     </script>
 </head>
@@ -36,7 +36,7 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-8">
-            <c:import url="/template/logon.jsp" />
+            <%@ include file="/template/logon.jsp"%>
         </div>
         <div class="col-md-4"></div>
     </div>

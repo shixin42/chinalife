@@ -71,6 +71,10 @@
         <servlet-name>FileUploadTest</servlet-name>
         <servlet-class>com.chinalife.servlet.TestFileUploadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>com.chinalife.servlet.uploadServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>FileUploadTest</servlet-name>
         <url-pattern>/FileUpload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 
     <jsp-config>

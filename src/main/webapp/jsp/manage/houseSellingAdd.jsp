@@ -101,8 +101,7 @@
         </div>
         <div class="col-md-9">
             <div>
-                <form class="form-horizontal" id="formHouseAdd" enctype="multipart/form-data"
-                      method="post">
+                <form class="form-horizontal" id="formHouseAdd"  method="post" action="/chinalife/houseSaleAdd">
                     <div id="legend" class="">
                         <legend class="">表单名</legend>
                     </div>
@@ -274,7 +273,6 @@
                     <%--div for file upload--%>
                     <div class="form-group">
                         <label class="col-md-2 control-label">File Button</label>
-
                         <div class="col-md-6 controls">
                             <input class="input-file" id="fileInput" type="file" name="picture">
                         </div>

@@ -21,6 +21,7 @@ public class LoginServlet extends BaseServlet {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String nickname = getParam(request, "nickname");
         String password = getParam(request, "password");
+        logger.info("nickname:"+nickname+" :password:"+password);
 
         try {
             Long userId = DAOFacade.getDAO(UserDAO.class).login(nickname, password);

@@ -8,8 +8,7 @@
         <div class="panel-body" >
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <form role="form" id="userRegisterForm" class="form-horizontal" action="/chinalife/register" enctype="multipart/form-data"
-                      method="post">
+                <form role="form" id="userRegisterForm" class="form-horizontal" action="/chinalife/register" method="post">
                     <label class="label-danger">
                         <c:if test="${requestScope.error != null}">
                             <c:forEach items="${requestScope.error.errorInfo}" var="entry">
