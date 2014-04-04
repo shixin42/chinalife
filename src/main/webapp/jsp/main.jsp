@@ -121,12 +121,13 @@
 
     </div>
 </div>
-<h2>&nbsp;</h2>
+<h5>&nbsp;</h5>
 <!--house buying area-->
 <div class="container">
     <div class="list-group">
-        <a href="#" class="list-group-item active">房屋买卖</a>
-        <div class="list-group-item">
+        <div class="row clearfix">
+            <a href="#" class="list-group-item active">房屋买卖</a>
+            <div class="list-group-item">
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div class="row">
@@ -181,6 +182,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
