@@ -1,13 +1,13 @@
-package com.chinalife.servlet;
+package com.chinalife.servlet.admin;
 
 import com.chinalife.dal.DAOException;
 import com.chinalife.dal.DAOFacade;
 import com.chinalife.dao.HouseSaleDAO;
 import com.chinalife.dao.HouseSalePictureDAO;
 import com.chinalife.utils.servlet.BaseServlet;
+import com.chinalife.utils.servlet.FileUploadUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 
@@ -17,16 +17,68 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by shixin on 3/24/14.
  */
-public class HouseSaleAddServlet extends BaseServlet {
-    private static final Logger logger = Logger.getLogger(HouseSaleAddServlet.class);
+public class HouseAddServlet extends BaseServlet {
+    private static final Logger logger = Logger.getLogger(HouseAddServlet.class);
 
     @Override
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        Validate.isTrue(ServletFileUpload.isMultipartContent(request), "Invalid request type.");
+        logger.info("Enter HouseAddServlet.");
+
+        try {
+            List<FileItem> items = FileUploadUtil.getFileIterms(request, getTmpPath(), -1, -1, null);
+
+            Map<String, String> parameters = FileUploadUtil.getFormFields(items);
+            String title = getStr(parameters, "title");
+            String district = getStr(parameters, "district");
+            String status = getStr(parameters, "status");
+            String address = getStr(parameters, "address");
+            String type = getStr(parameters, "type");
+            int room = getInt(parameters, "room");
+            int toilet = getInt(parameters, "toilet");
+            int carport = getInt(parameters, "carport");
+            double area = getDouble(parameters, "area");
+            double minPrice = getDouble(parameters, "min_price");
+            double maxPrice = getDouble(parameters, "max_price");
+            String desc = getStr(parameters, "description");
+            String contactPersion1 = getStr(parameters, "first_contact_name");
+            String contactPhone1 = getStr(parameters, "first_contact_phone");
+            String contactPersion2 = getStr(parameters, "second_contact_name");
+            String contactPhone2 = getStr(parameters, "second_contact_phone");
+
+            final Long houseSaleId = DAOFacade.getDAO(HouseSaleDAO.class)
+                    .createHouseSale(title, district, status, address, type, room, toilet, carport, area, minPrice, maxPrice, desc,
+                            contactPersion1, contactPhone1, contactPersion2, contactPhone2, new Timestamp(System.currentTimeMillis()));
+
+            File appDir = new File(getAppPath());
+            Validate.isTrue(appDir.exists() && appDir.isDirectory(), "App dir is not exists.");
+
+            File houseSalePictureDir = new File(appDir, "house-sale-picture");
+            if (!houseSalePictureDir.exists()) {
+                houseSalePictureDir.mkdir();
+            }
+
+            File myDir = new File(houseSalePictureDir, String.valueOf(houseSaleId));
+            if (myDir.exists()) {
+                logger.info(myDir.getAbsolutePath() + " exists, so delete it.");
+                myDir.delete();
+            }
+            myDir.mkdir();
+
+            FileUploadUtil.saveToDisk(items, myDir,null,new FileUploadUtil.AfterProcessor() {
+                @Override
+                public void process(FileItem item, File saveTo) {
+                    DAOFacade.getDAO(HouseSalePictureDAO.class).createHouseSalePicture(
+                            houseSaleId, item.getName(), file.getAbsolutePath(), content, new Timestamp(System.currentTimeMillis()));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Integer room = null;
         Integer hall = null;
@@ -36,7 +88,7 @@ public class HouseSaleAddServlet extends BaseServlet {
         Double price = null;
         String community = null;
         String address = null;
-        String title = null;
+
         String description = null;
         String contactPerson = null;
         String contactPhone = null;

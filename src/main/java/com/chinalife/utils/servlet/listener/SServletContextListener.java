@@ -1,8 +1,6 @@
 package com.chinalife.utils.servlet.listener;
 
 import com.chinalife.dal.DBAccesser;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
@@ -11,7 +9,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.SessionCookieConfig;
-import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -20,7 +17,6 @@ import java.util.Properties;
  */
 public class SServletContextListener implements ServletContextListener {
     private Logger logger = Logger.getLogger(SServletContextListener.class);
-    public static final String FILE_UPLOAD_KEY = "fileUpload";
 
     private ServletContext servletContext;
 
@@ -32,7 +28,6 @@ public class SServletContextListener implements ServletContextListener {
 
             initDB();
             initHttpSession();
-            initFileUpload();
         } catch (Exception e) {
             logger.error("Failed init ServerContext due to:", e);
         }
@@ -66,24 +61,5 @@ public class SServletContextListener implements ServletContextListener {
         SessionCookieConfig config = servletContext.getSessionCookieConfig();
         config.setMaxAge(60 * 60 * 24 * 7); //7 days
         config.setName("CHINALIFT_SESSION_ID");
-    }
-
-    private void initFileUpload() {
-        String repository = servletContext.getInitParameter("temp.dir");
-        Validate.notEmpty(repository, "Need temp.dir");
-
-        File tmpDir = new File(repository);
-        Validate.isTrue(tmpDir.exists() && tmpDir.isDirectory(), "Cant find temp dir.");
-
-        //Create DiskFileItemFactory.
-        DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
-        diskFileItemFactory.setRepository(tmpDir);
-
-        //Create FileUpload.
-        ServletFileUpload fileUpload = new ServletFileUpload();
-        fileUpload.setFileItemFactory(diskFileItemFactory);
-
-        //Save for application.
-        servletContext.setAttribute(FILE_UPLOAD_KEY, fileUpload);
     }
 }

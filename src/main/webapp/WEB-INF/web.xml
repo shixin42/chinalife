@@ -61,7 +61,7 @@
     </servlet>
     <servlet>
         <servlet-name>HouseSaleAddServlet</servlet-name>
-        <servlet-class>com.chinalife.servlet.HouseSaleAddServlet</servlet-class>
+        <servlet-class>com.chinalife.servlet.admin.HouseAddServlet</servlet-class>
         <init-param>
             <param-name>s</param-name>
             <param-value>/jsp/main.jsp</param-value>

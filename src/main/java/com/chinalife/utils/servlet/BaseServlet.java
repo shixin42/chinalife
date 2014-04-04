@@ -1,9 +1,7 @@
 package com.chinalife.utils.servlet;
 
-import com.chinalife.utils.servlet.listener.SServletContextListener;
 import com.chinalife.utils.servlet.pojo.Error;
 import com.chinalife.utils.servlet.pojo.ErrorCode;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 
@@ -15,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
+import java.util.Map;
 
 /**
  * Created by ishikin on 14-3-18.
@@ -43,10 +42,8 @@ public abstract class BaseServlet extends HttpServlet {
         return getServletContext().getRealPath("/");
     }
 
-    protected ServletFileUpload getFileUpload() {
-        Object object = getServletContext().getAttribute(SServletContextListener.FILE_UPLOAD_KEY);
-        Validate.notNull(object, "Cant find fildUpload in application.");
-        return (ServletFileUpload) object;
+    protected String getTmpPath() {
+        return getServletContext().getInitParameter("tmp");
     }
 
     protected RequestDispatcher getSuccessDispatcher(HttpServletRequest request) {
@@ -57,6 +54,24 @@ public abstract class BaseServlet extends HttpServlet {
     protected RequestDispatcher getFailureDispatcher(HttpServletRequest request) {
         Validate.notEmpty(failureAction, "Cant find failure action.");
         return request.getRequestDispatcher(failureAction);
+    }
+
+    protected double getDouble(Map<String, String> map, String key) {
+        Validate.isTrue(map.containsKey(key));
+        Validate.notEmpty(map.get(key));
+        return Double.parseDouble(map.get(key));
+    }
+
+    protected int getInt(Map<String, String> map, String key) {
+        Validate.isTrue(map.containsKey(key));
+        Validate.notEmpty(map.get(key));
+        return Integer.parseInt(map.get(key));
+    }
+
+    protected String getStr(Map<String, String> map, String key) {
+        Validate.isTrue(map.containsKey(key));
+        Validate.notEmpty(map.get(key));
+        return map.get(key);
     }
 
     /**
