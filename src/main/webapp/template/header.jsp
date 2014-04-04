@@ -9,6 +9,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
     <div class="row clearfix">
+        <div class="col-md-4 column">
+            <img data-src="holder.js/220x80" class="img-rounded">
+        </div>
+        <div class="col-md-8 column">
+            <form class="navbar-form center-block" role="search">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="请输入搜索内容" />
+                </div> <button type="type" class="btn btn-default" >搜索</button>
+            </form>
+        </div>
+    </div>
+    <div class="row clearfix">
         <div class="col-md-12 column">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -34,11 +46,17 @@
                         <li>
                             <a href="#">网站设计</a>
                         </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <c:choose>
                             <c:when test="${sessionScope.user == null}">
                                 <li id="userLogon">
                                         <%--<a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>--%>
-                                    <a href="/chinalife/jsp/user/userLogon.jsp">用户登陆</a>
+                                    <a href="/chinalife/jsp/user/userLogon.jsp" class="navbar-right">登陆</a>
+                                </li>
+                                <li id="userRegister">
+                                        <%--<a id="modal-964516" href="#modal-container-964516" role="button" class="btn" data-toggle="modal">用户登陆</a>--%>
+                                    <a href="/chinalife/jsp/user/userRegister.jsp" class="navbar-right">注册</a>
                                 </li>
                             </c:when>
                             <c:otherwise>
@@ -61,11 +79,7 @@
                             </c:otherwise>
                         </c:choose>
                     </ul>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <input class="form-control" type="text" />
-                        </div> <button type="type" class="btn btn-default" >Submit</button>
-                    </form>
+
                     <!--登陆弹出框-->
                     <%--<div class="modal fade" id="modal-container-964516" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

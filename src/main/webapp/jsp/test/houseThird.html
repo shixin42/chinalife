@@ -1,0 +1,199 @@
+
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="../../css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>-->
+    <script src="../../js/jquery-1.10.1.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/holder.js" type="text/javascript"></script>
+    <!--<script src="../../js/jquery.cookie.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="../../js/image/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="../../js/image/jquery.pikachoose.js"></script>
+    <script type="text/javascript" src="../../js/image/jquery.touchwipe.min.js"></script>
+    <script type="text/javascript" src="../../js/image/jquery.fancybox-1.3.4.js"></script>
+    <link href="../../css/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript">
+        $(document).ready(function (){
+            //$("#pikame").PikaChoose({carousel:true});
+            var a = function(self){
+                self.anchor.fancybox();
+            };
+            $("#pikame").PikaChoose({
+                buildFinished:a,
+                carousel:true,
+                autoPlay:false,
+                showCaption:false
+            });
+        });
+    </script>
+    <style type="text/css">
+        @import url('../../css/base.css');
+        /* jCarousel Styles */
+        /*if you're not using the carousel you can delete everything below this */
+        .jcarousel-skin-pika .jcarousel-container-horizontal { padding: 10px 0px; overflow:hidden;}
+        .jcarousel-skin-pika .jcarousel-clip-horizontal {height: 90px; width: 485px;}
+        .jcarousel-skin-pika .jcarousel-item-horizontal { margin-right: 10px;}
+    </style>
+</head>
+<body>
+<!--navigation for top area-->
+<div class="container">
+    <div class="row clearfix">
+        <!--<div class="col-md-1 column"></div>-->
+        <!--center information for house selling-->
+        <div class="col-md-8 column">
+
+            <div class="row clearfix ">
+                <div class="col-md-12 column">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                万达广场真正的一室一厅，设施全，看好来电
+                            </h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row clearfix " >
+                                <div class="col-md-5 column">
+                                    <dl class="dl-horizontal ">
+                                        <dt>
+                                            地址：
+                                        </dt>
+                                        <dd>
+                                            长虹大路1777号
+                                        </dd>
+                                        <dt>
+                                            价格：
+                                        </dt>
+                                        <dd>
+                                            500$
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-3 column">
+                                    经纪人信息
+                                </div>
+                                <div class="col-md-4 column">
+                                    <img data-src="holder.js/220x80" class="img-rounded">
+                                </div>
+                            </div>
+                        </div>
+                        <!--house images-->
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                房源信息
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="pikame" class="jcarousel-skin-pika">
+                                <li><a href="../../img/4.jpg"><img src="../../img/4.jpg"/></a></li>
+                                <li><a href="../../img/5.jpg"><img src="../../img/5.jpg"/></a></li>
+                                <li><a href="../../img/6.jpg"><img src="../../img/6.jpg"/></a></li>
+                                <li><a href="../../img/1.jpg"><img src="../../img/1.jpg"/></a></li>
+                                <li><a href="../../img/2.jpg"><img src="../../img/2.jpg"/></a></li>
+                                <li><a href="../../img/3.jpg"><img src="../../img/3.jpg"/></a></li>
+                            </ul>
+                        </div>
+                        <!--house detail info-->
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                房源信息
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                        <!--house inquire info-->
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                邮件询问
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="userName">姓名</label>
+                                    <div class="controls col-sm-6">
+                                        <input placeholder="请输入姓名" id="userName" name="userName" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="userEmail">邮箱地址</label>
+                                    <div class="controls col-sm-6">
+                                        <input placeholder="请输入邮箱地址" id="userEmail" name="userEmail" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="userTel">电话</label>
+                                    <div class="controls col-sm-6">
+                                        <input placeholder="请输入电话号码" id="userTel" name="userTel" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">询问内容</label>
+                                    <div class="controls col-sm-6">
+                                        <label class="checkbox">
+                                            <input value="价格询问" type="checkbox">
+                                            价格询问
+                                        </label>
+                                        <label class="checkbox">
+                                            <input value="预约看房时间" type="checkbox">
+                                            预约看房时间
+                                        </label>
+                                        <label class="checkbox">
+                                            <input value="索取房产文件" type="checkbox">
+                                            索取房产文件
+                                        </label>
+                                        <label class="checkbox">
+                                            <input value="被告知相同房产" type="checkbox">
+                                            被告知相同房产
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-sm-2">邮件正文</label>
+                                    <div class="controls col-sm-6">
+                                        <div class="textarea" >
+                                            <textarea type="" class="" id="emailContent" name="emailContent" rows="6" cols="55"> </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2"></label>
+                                    <div class="controls col-sm-6">
+                                        <button class="btn btn-primary">发送邮件</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div class="row clearfix ">
+            </div>
+            <div class="row clearfix ">
+                <img data-src="holder.js/250x300" class="img-rounded">
+            </div>
+            <div class="row clearfix ">
+            </div>
+            <div class="row clearfix">
+                <img data-src="holder.js/250x300" class="img-rounded">
+            </div>
+            <div class="row clearfix ">
+            </div>
+            <div class="row clearfix ">
+                <img data-src="holder.js/250x300" class="img-rounded">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1 column"></div>
+</div>
+<div class="container">
+    <div class="row clearfix">
+        3
+    </div>
+</div>
+</body>
+</html>
