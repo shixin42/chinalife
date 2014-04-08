@@ -5,7 +5,7 @@ package com.chinalife.utils.servlet.pojo;
  */
 public enum ErrorCode {
     LoginError(1000, "Username or password invalid."),
-
+    CaptchaError(1012, "CaptchaError"),
     DuplicateUserNicknameError(1010, "User nickname exists."),
     DuplicateUserEmailError(1011, "User email exists.");
     

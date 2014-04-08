@@ -60,22 +60,60 @@
                                 </li>
                             </c:when>
                             <c:otherwise>
+                                <%--<li id="userMenu" class="dropdown">--%>
+                                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--%>
+                                        <%--<c:out value="${sessionScope.user.getNickname()}">未登陆</c:out>--%>
+                                        <%--<strong class="caret"></strong></a>--%>
+                                    <%--<ul class="dropdown-menu">--%>
+                                        <%--<li>--%>
+                                            <%--<a href="/chinalife/jsp/manage/userManage.jsp">用户资料</a>--%>
+                                        <%--</li>--%>
+                                        <%--<li>--%>
+                                            <%--<a href="#">用户退出</a>--%>
+                                        <%--</li>--%>
+                                        <%--<li>--%>
+                                            <%--<a href="#">进入我的店铺</a>--%>
+                                        <%--</li>--%>
+                                    <%--</ul>--%>
+                                <%--</li>--%>
                                 <li id="userMenu" class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <c:out value="${sessionScope.user.getNickname()}">未登陆</c:out>
-                                        <strong class="caret"></strong></a>
+                                    <c:out value="${sessionScope.user.getNickname()}">未登陆</c:out>
+                                    <strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="/chinalife/jsp/manage/userManage.jsp">用户资料</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">用户退出</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">进入我的店铺</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                    <li>
+                                        <div class="navbar-content"  style="width:300px;padding: 15px;padding-bottom:0px;">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <img src="/chinalife/img/default_img.jpg"
+                                                         alt="Alternate Text" class="img-responsive" />
+                                                    <p class="text-center small">
+                                                        <a href="#">Change Photo</a></p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <span><c:out value="${sessionScope.user.getNickname()}">未登陆</c:out></span>
+                                                    <p class="text-muted small">
+                                                        <c:out value="${sessionScope.user.getEmail()}">未登陆</c:out>
+                                                    </p>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <a href="/chinalife/jsp/manage/userManage.jsp" class="btn btn-primary btn-sm active">View Profile</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="navbar-footer" style="background-color:#DDD;">
+                                            <div class="navbar-footer-content" style="padding:5px 5px 5px 5px;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <a href="http://www.jquery2dotnet.com" class="btn btn-default btn-sm pull-right">Sign Out</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                             </c:otherwise>
                         </c:choose>
                     </ul>

@@ -34,6 +34,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="password" class="control-label col-md-2">验证码</label>
+                    <div class="col-md-4">
+                        <input class="form-control" id="captcha" name="captcha" type="text" placeholder="请输入右侧验证码"/>
+                    </div>
+                    <div class="col-md-4">
+                        <img border=0  id="code" src="/chinalife/template/captcha.jsp">
+                        <a href="javascript:changeImg()" >看不清，换一张 </a>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-md-2"></div>
                     <div class="checkbox col-md-8">
                         <label>

@@ -21,12 +21,20 @@ public class LoginServlet extends BaseServlet {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String nickname = getParam(request, "nickname");
         String password = getParam(request, "password");
-        logger.info("nickname:"+nickname+" :password:"+password);
+        String userRand = getParam(request, "captcha");
+        logger.info("nickname:"+nickname+" :password:"+password + "captcha:"+userRand);
 
         try {
+            String sysRand = (String)request.getSession().getAttribute("rand");;
+
             Long userId = DAOFacade.getDAO(UserDAO.class).login(nickname, password);
 
-            if (null == userId) {
+            //validate the captcha for logon
+            if(!userRand.equals(sysRand)){
+                addError(request, ErrorCode.CaptchaError);
+                getFailureDispatcher(request).forward(request, response);
+            }
+            else if (null == userId) {
                 addError(request, ErrorCode.LoginError);
                 getFailureDispatcher(request).forward(request, response);
             } else {

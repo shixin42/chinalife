@@ -15,6 +15,43 @@
     <c:import url="/template/importedFiles.html" />
     <script type="application/javascript" language="JavaScript">
     </script>
+    <style type="text/css">
+        .pic
+        {
+            margin-top:50px;
+            width:120px;
+            margin-left:50px;
+            margin-bottom:-60px;
+        }
+        .panel
+        {
+            background-image:url("http://autoimagesize.com/wp-content/uploads/2014/01/rainbow-aurora-background-wallpaper-colour-images-rainbow-background.jpg");
+        }
+        .name
+        {
+            position:absolute;
+            padding-left:200px;
+            font-size:30px;
+        }
+        .dropdown
+        {
+            position:absolute;
+        }
+        .change
+        {
+            position:relative;
+            bottom:20px;
+            padding:1px;
+            color:white;
+            text-decoration:none;
+        }
+        .change:hover
+        {
+            text-decoration:none;
+            background-color:black;
+            color:white;
+        }
+    </style>
 </head>
 <body>
 <!--navigation for left area-->
@@ -26,6 +63,14 @@
             <%@ include file="/template/left.jsp"%>
         </div>
         <div class="col-md-9">
+            <h3>账户信息管理</h3>
+            <div class="panel">
+                <img class="pic img-circle" src="/chinalife/img/default_img.jpg" alt="...">
+                <div class="name"><small><c:out value="${sessionScope.user.getEmail()}">未登陆</c:out></small></div>
+                <a href="#" class="btn btn-xs btn-primary pull-right" style="margin:10px;">
+                    <span class="glyphicon glyphicon-picture"></span> Change cover</a>
+            </div>
+            <br><br><br>
             <div class="tabbable" id="tabs-204282">
                 <ul class="nav nav-tabs">
                     <li>
@@ -58,7 +103,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">注册时间</label>
                                 <div class="col-md-6 controls">
-                                    <p class="form-control-static"><c:out value="${sessionScope.user.getCreateTime()}">注册时间</c:out></p>
+                                    <p class="form-control-static"><c:out value="${sessionScope.user.getNickname()}">注册时间</c:out></p>
                                 </div>
                                 <div class="col-md-4"></div>
                             </div>
@@ -66,14 +111,14 @@
                                 <label class="col-md-2 control-label" for="telCell">手机号码</label>
                                 <div class="col-md-6 controls">
                                     <input  class="form-control" id="telCell" type="text" name="telCell"
-                                            value=" <c:out value="${sessionScope.user.getTelCell()}">手机号码</c:out>">
+                                            value=" <c:out value="${sessionScope.user.getNickname()}">手机号码</c:out>">
                                 </div>
                                 <div class="col-md-4"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">上次修改时间</label>
                                 <div class="col-md-6 controls">
-                                    <p class="form-control-static"><c:out value="${sessionScope.user.getUpdateTime()}">上次修改时间</c:out></p>
+                                    <p class="form-control-static"><c:out value="${sessionScope.user.getNickname()}">上次修改时间</c:out></p>
                                 </div>
                                 <div class="col-md-4"></div>
                             </div>
@@ -100,11 +145,10 @@
                                 <label class="col-md-2 control-label" for="telNumber">固定电话</label>
                                 <div class="col-md-6 controls">
                                     <input  class="form-control" id="telNumber" name="telNumber" type="text"
-                                            value=" <c:out value="${sessionScope.user.getTelNum()}">固定电话</c:out>">
+                                            value=" <c:out value="${sessionScope.user.getNickname()}">固定电话</c:out>">
                                 </div>
                                 <div class="col-md-4"></div>
                             </div>
-
                         </form>
                     </div>
                 </div>

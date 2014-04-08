@@ -1,21 +1,24 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Chao.Cui.VWED
+  Date: 14-4-5
+  Time: 上午9:45
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <!--<link href="../../css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>-->
-    <script src="../../js/jquery-1.10.1.js" type="text/javascript"></script>
-    <script src="../../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../../js/holder.js" type="text/javascript"></script>
-    <!--<script src="../../js/jquery.cookie.js" type="text/javascript"></script>-->
-    <script type="text/javascript" src="../../js/image/jquery.jcarousel.min.js"></script>
-    <script type="text/javascript" src="../../js/image/jquery.pikachoose.js"></script>
-    <script type="text/javascript" src="../../js/image/jquery.touchwipe.min.js"></script>
-    <script type="text/javascript" src="../../js/image/jquery.fancybox-1.3.4.js"></script>
-    <link href="../../css/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css"/>
-    <script language="javascript">
-        $(document).ready(function (){
+    <c:import url="/template/importedFiles.html" />
+    <link href="/chinalife/css/base.css" rel="stylesheet" type="text/css"/>
+    <script type="application/javascript" language="JavaScript">
+        $(function()
+        {
+            $("#lifeService").removeClass("active");
+            $("#houseBuying").addClass("active");
+
             //$("#pikame").PikaChoose({carousel:true});
             var a = function(self){
                 self.anchor.fancybox();
@@ -26,10 +29,14 @@
                 autoPlay:false,
                 showCaption:false
             });
-        });
+        })
     </script>
+    <script type="text/javascript" src="/chinalife/js/image/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="/chinalife/js/image/jquery.pikachoose.js"></script>
+    <script type="text/javascript" src="/chinalife/js/image/jquery.touchwipe.min.js"></script>
+    <script type="text/javascript" src="/chinalife/js/image/jquery.fancybox-1.3.4.js"></script>
+    <link href="/chinalife/css/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
-        @import url('../../css/base.css');
         /* jCarousel Styles */
         /*if you're not using the carousel you can delete everything below this */
         .jcarousel-skin-pika .jcarousel-container-horizontal { padding: 10px 0px; overflow:hidden;}
@@ -39,11 +46,12 @@
 </head>
 <body>
 <!--navigation for top area-->
+<%@ include file="/template/header.jsp"%>
 <div class="container">
     <div class="row clearfix">
         <!--<div class="col-md-1 column"></div>-->
         <!--center information for house selling-->
-        <div class="col-md-9 column">
+        <div class="col-md-8 column">
 
             <div class="row clearfix ">
                 <div class="col-md-12 column">
@@ -82,17 +90,17 @@
                         <!--house images-->
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                房屋图片
+                                房源信息
                             </h3>
                         </div>
                         <div class="panel-body">
                             <ul id="pikame" class="jcarousel-skin-pika">
-                                <li><a href="../../img/4.jpg"><img src="../../img/4.jpg"/></a></li>
-                                <li><a href="../../img/5.jpg"><img src="../../img/5.jpg"/></a></li>
-                                <li><a href="../../img/6.jpg"><img src="../../img/6.jpg"/></a></li>
-                                <li><a href="../../img/1.jpg"><img src="../../img/1.jpg"/></a></li>
-                                <li><a href="../../img/2.jpg"><img src="../../img/2.jpg"/></a></li>
-                                <li><a href="../../img/3.jpg"><img src="../../img/3.jpg"/></a></li>
+                                <li><a href="/chinalife/img/4.jpg"><img src="/chinalife/img/4.jpg"/></a></li>
+                                <li><a href="/chinalife/img/5.jpg"><img src="/chinalife/img/5.jpg"/></a></li>
+                                <li><a href="/chinalife/img/6.jpg"><img src="/chinalife/img/6.jpg"/></a></li>
+                                <li><a href="/chinalife/img/1.jpg"><img src="/chinalife/img/1.jpg"/></a></li>
+                                <li><a href="/chinalife/img/2.jpg"><img src="/chinalife/img/2.jpg"/></a></li>
+                                <li><a href="/chinalife/img/3.jpg"><img src="/chinalife/img/3.jpg"/></a></li>
                             </ul>
                         </div>
                         <!--house detail info-->
@@ -188,12 +196,7 @@
             </div>
         </div>
     </div>
-    <!--<div class="col-md-1 column"></div>-->
-</div>
-<div class="container">
-    <div class="row clearfix">
-        3
-    </div>
+    <div class="col-md-1 column"></div>
 </div>
 </body>
 </html>

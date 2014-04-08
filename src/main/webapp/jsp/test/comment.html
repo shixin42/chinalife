@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+    <script src="../../js/jquery-1.10.1.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../js/jquery.validate.js" type="text/javascript"></script>
+    <script src="../../js/holder.js" type="text/javascript"></script>
+
+    <script type="application/javascript" language="JavaScript">
+        $(function()
+        {
+            $(".action button[title='Approved']").click(function(){
+                $("#userReply").show();
+            });
+        })
+    </script>
+    <style type="text/css">
+        .widget .panel-body {
+            padding: 0;
+        }
+        .widget .list-group {
+            margin-bottom: 0;
+        }
+        .widget .panel-title {
+            display: inline;
+        }
+        .widget .label-info {
+            float: right;
+        }
+        .widget li.list-group-item {
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            border-color: #DDDDDD -moz-use-text-color -moz-use-text-color;
+            border-image: none;
+            border-radius: 0;
+            border-right: 0 none;
+            border-style: solid none none;
+            border-width: 1px 0 0;
+        }
+        .widget li.list-group-item:hover {
+            background-color: rgba(86, 61, 124, 0.1);
+        }
+        .widget .mic-info {
+            color: #666666;
+            font-size: 11px;
+        }
+        .widget .action {
+            margin-top: 5px;
+        }
+        .widget .comment-text {
+            font-size: 12px;
+        }
+        .widget .btn-block {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title"> Recent Comments</h3>
+                <span class="label label-info"> 78</span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img class="img-circle img-responsive" alt="" src="http://placehold.it/80">
+                            </div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html"> Google Style Login Page Design Using Bootstrap</a>
+                                    <div class="mic-info">
+                                        By:
+                                        <a href="#">Bhaumik Patel</a>
+                                        on 2 Aug 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text"> Awesome design </div>
+                                <div class="action">
+                                    <button class="btn btn-primary btn-xs" title="Edit" type="button">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button class="btn btn-success btn-xs" title="Approved" type="button">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button class="btn btn-danger btn-xs" title="Delete" type="button">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item col-xs-offset-2 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="#">tracycc</a>回复<a href="#">cuichao</a>
+                                    on 11 Nov 2013
+                                </div>
+                                <div class="comment-text"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim </div>
+                                <div class="action">
+                                    <button class="btn btn-primary btn-xs" title="Edit" type="button">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button class="btn btn-success btn-xs" title="Approved" type="button">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button class="btn btn-danger btn-xs" title="Delete" type="button">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item col-xs-offset-2 col-md-offset-1" id="userReply" name="userReply" style="display: none">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    回复<a href="#">cuichao:</a>
+                                </div>
+                                <div class="comment-text">
+                                    <input type="text" class="form-control" id="replyComment" name="replyComment"
+                                           placeholder="参与讨论">
+                                    <button type="submit" class="btn btn-success">回复</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img class="img-circle img-responsive" alt="" src="http://placehold.it/80">
+                            </div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
+                                    <div class="mic-info">
+                                        By:
+                                        <a href="#">Bhaumik Patel</a>
+                                        on 11 Nov 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim </div>
+                                <div class="action">
+                                    <button class="btn btn-primary btn-xs" title="Edit" type="button">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button class="btn btn-success btn-xs" title="Approved" type="button">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button class="btn btn-danger btn-xs" title="Delete" type="button">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

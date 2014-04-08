@@ -28,6 +28,11 @@
 //                }
 //            })
         })
+        function changeImg()
+        {
+            now = new Date();
+            $("#code").src="/chinalife/template/captcha.jsp?code="+now.getTime();
+        }
     </script>
 </head>
 <body>
