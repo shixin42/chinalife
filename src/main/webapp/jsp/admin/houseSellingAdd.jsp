@@ -11,10 +11,16 @@
 <head>
     <title>House Add</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../../css/jquery.fileupload.css">
+    <link rel="stylesheet" href="../../css/jquery.fileupload-ui.css">
     <c:import url="/template/style.html"/>
     <c:import url="/template/js.html"/>
     <script type="application/javascript" language="JavaScript">
         $(function () {
+            $(".input-file").click(function(){
+                //do something
+            });
+
             // validate the comment form when it is submitted
             //$("#commentForm").validate();
             $("#formHouseAdd").validate({
@@ -286,11 +292,12 @@
         <div class="form-group">
             <label class="col-md-2 control-label">File Button</label>
 
-            <div class="col-md-6 controls">
-                <input class="input-file" id="fileInput" type="file" name="picture">
+            <div class="col-md-6 controls" id="file-upload-div">
+                <input class="input-file" id="fileInput" type="file">
             </div>
             <div class="col-md-4"></div>
         </div>
+
         <%--div for submit button--%>
         <div class="form-group">
             <label class="col-md-2 control-label"></label>
