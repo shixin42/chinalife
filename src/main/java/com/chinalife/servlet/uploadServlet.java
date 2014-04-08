@@ -13,6 +13,7 @@ import com.chinalife.dal.DAOFacade;
 import com.chinalife.dao.HouseSaleDAO;
 import com.chinalife.dao.HouseSalePictureDAO;
 import com.chinalife.utils.servlet.BaseServlet;
+import com.chinalife.utils.servlet.FileUploadUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.lang3.Validate;
@@ -35,6 +36,7 @@ public class uploadServlet extends BaseServlet {
 
     @Override
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        /**
         logger.info("this is upload servlet");
         Validate.isTrue(ServletFileUpload.isMultipartContent(request), "Invalid request type.");
 
@@ -42,7 +44,7 @@ public class uploadServlet extends BaseServlet {
         String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/";
 
         try {
-            List<FileItem> fileItems = getFileUpload().parseRequest(request);
+            List<FileItem> fileItems = FileUploadUtil.getFileIterms(request);
 
             File appDir = new File(getAppPath());
             Validate.isTrue(appDir.exists() && appDir.isDirectory(), "App dir is not exists.");
@@ -104,5 +106,6 @@ public class uploadServlet extends BaseServlet {
         } catch (Exception e) {
             logger.error("Failed to parse request", e);
         }
+        **/
     }
 }

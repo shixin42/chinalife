@@ -130,7 +130,7 @@ public class FileUploadUtil {
                 item.write(newFile);
 
                 if (null != after) {
-                    after.process(item, saveTo);
+                    after.process(newFile);
                 }
             }
         }
@@ -167,10 +167,10 @@ public class FileUploadUtil {
     }
 
     public static interface BeforeProcessor {
-        void process(FileItem item, File saveTo);
+        void process(FileItem item, File saveTo) throws Exception;
     }
 
     public static interface AfterProcessor {
-        void process(FileItem item, File saveTo);
+        void process(File savedFile) throws Exception;
     }
 }
