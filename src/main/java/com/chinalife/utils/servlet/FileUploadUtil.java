@@ -99,7 +99,8 @@ public class FileUploadUtil {
         for (FileItem item : items) {
             if (item.isFormField()) {
                 String fieldName = item.getFieldName();
-                String fieldValue = item.getString();
+                String fieldValue = item.getString("UTF-8");
+                logger.info("Get form field and value : " + fieldName + ", " + fieldValue);
                 formFields.put(fieldName, fieldValue);
             }
         }
@@ -148,6 +149,7 @@ public class FileUploadUtil {
         if (null != listener) {
             fileUpload.setProgressListener(listener);
         }
+        fileUpload.setHeaderEncoding("UTF-8");
 
         return fileUpload.parseRequest(request);
     }
