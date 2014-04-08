@@ -18,8 +18,8 @@
         <param-value>100</param-value>
     </context-param>
     <context-param>
-        <param-name>temp.dir</param-name>
-        <param-value>D:\bin\apache-tomcat-7.0.52\tmp</param-value>
+        <param-name>tmp</param-name>
+        <param-value>/tmp</param-value>
     </context-param>
 
     <listener>

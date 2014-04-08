@@ -13,6 +13,6 @@ import java.sql.Timestamp;
 @DAO
 public interface HouseSalePictureDAO {
     @Table("house_sale_picture")
-    @SQL("insert into house_sale_picture(house_id,picture_name,picture_path,picture_content,create_time) values (?,?,?,?,?)")
-    void createHouseSalePicture(long id, String name, String path, byte[] content, Timestamp createTime) throws DAOException;
+    @SQL("insert into house_sale_picture(house_id,picture_name,picture_path,create_time) values (?,?,?,?)")
+    void createHouseSalePicture(long id, String name, String path, Timestamp createTime) throws DAOException;
 }

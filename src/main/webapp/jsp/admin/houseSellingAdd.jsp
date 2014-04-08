@@ -102,7 +102,7 @@
 </div>
 <div class="col-md-9">
 <div>
-    <form class="form-horizontal" id="formHouseAdd" method="post" action="/chinalife/houseSaleAdd">
+    <form class="form-horizontal" id="formHouseAdd" method="post" action="/chinalife/houseSaleAdd" enctype="multipart/form-data">
         <div id="legend" class="">
             <legend class="">House Add</legend>
         </div>
