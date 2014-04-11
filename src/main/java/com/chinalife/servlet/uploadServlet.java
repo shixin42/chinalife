@@ -36,7 +36,6 @@ public class uploadServlet extends BaseServlet {
 
     @Override
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        /**
         logger.info("this is upload servlet");
         Validate.isTrue(ServletFileUpload.isMultipartContent(request), "Invalid request type.");
 
@@ -44,7 +43,7 @@ public class uploadServlet extends BaseServlet {
         String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/";
 
         try {
-            List<FileItem> fileItems = FileUploadUtil.getFileIterms(request);
+            List<FileItem> fileItems = FileUploadUtil.getFileIterms(request, getTmpPath(), -1, -1, null);
 
             File appDir = new File(getAppPath());
             Validate.isTrue(appDir.exists() && appDir.isDirectory(), "App dir is not exists.");
@@ -67,6 +66,10 @@ public class uploadServlet extends BaseServlet {
             String deleteType = "";
             String thumbnailUrl ="";
             //return to the website with json data.
+
+//            File saveTo = new File("D:");
+//            FileUploadUtil.saveToDisk(fileItems, saveTo, null,null);
+
             String json = "{\"files\":[{";
             for (FileItem fileItem : fileItems) {
                 if (!fileItem.isFormField()) {
@@ -106,6 +109,5 @@ public class uploadServlet extends BaseServlet {
         } catch (Exception e) {
             logger.error("Failed to parse request", e);
         }
-        **/
     }
 }

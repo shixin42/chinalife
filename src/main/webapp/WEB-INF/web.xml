@@ -19,7 +19,7 @@
     </context-param>
     <context-param>
         <param-name>tmp</param-name>
-        <param-value>/tmp</param-value>
+        <param-value>D:\bin\apache-tomcat-7.0.52\temp</param-value>
     </context-param>
 
     <listener>

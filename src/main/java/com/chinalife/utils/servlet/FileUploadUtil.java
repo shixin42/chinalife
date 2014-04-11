@@ -118,20 +118,20 @@ public class FileUploadUtil {
     public static void saveToDisk(List<FileItem> items, File saveTo, BeforeProcessor before, AfterProcessor after) throws Exception {
         for (FileItem item : items) {
             if (!item.isFormField()) {
-                if (null != before) {
-                    before.process(item, saveTo);
-                }
-
-                File newFile = new File(saveTo, item.getName());
-                if (newFile.exists()) {
-                    logger.info("File " + newFile.getPath() + " exists, will delete.");
-                    newFile.delete();
-                }
-                item.write(newFile);
-
-                if (null != after) {
-                    after.process(newFile);
-                }
+//                if (null != before) {
+//                    before.process(item, saveTo);
+//                }
+                logger.info("file name tracycc: " +item.getName());
+//                File newFile = new File(saveTo, item.getName());
+//                if (newFile.exists()) {
+//                    logger.info("File " +item.getName() +" path: "+ newFile.getPath() + " exists, will delete.");
+//                    newFile.delete();
+//                }
+//                item.write(newFile);
+//
+//                if (null != after) {
+//                    after.process(newFile);
+//                }
             }
         }
     }
