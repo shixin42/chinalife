@@ -14,10 +14,11 @@
         <!--
         <log4j_path>/home/shixin/soft/apache-tomcat-7.0.52/logs</log4j_path>
         -->
-        <log4j_path>/Users/ishikin/soft/apache-tomcat-7.0.52/logs</log4j_path>
+        <log4j_path>/tmp</log4j_path>
         <log4j_level>INFO</log4j_level>
         <db_user>shixin</db_user>
         <db_password>shixin</db_password>
+        <jetty_version>9.0.2.v20130417</jetty_version>
     </properties>
     <profiles>
         <profile>
@@ -118,6 +119,11 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty_version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -156,6 +162,20 @@
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
                     <server>tomcat</server>
+                </configuration>
+            </plugin>
+            <!-- jetty plugin -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty_version}</version>
+                <configuration>
+                    <httpConnector>
+                        <port>8081</port>
+                    </httpConnector>
+                    <webApp>
+                        <contextPath>/muscle</contextPath>
+                    </webApp>
                 </configuration>
             </plugin>
         </plugins>
