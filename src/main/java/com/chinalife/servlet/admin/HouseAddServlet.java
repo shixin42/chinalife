@@ -26,6 +26,7 @@ public class HouseAddServlet extends BaseServlet {
     @Override
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         logger.info("Enter HouseAddServlet.");
+        logger.info("天下无贼");
 
         try {
             List<FileItem> items = FileUploadUtil.getFileIterms(request, getTmpPath(), -1, -1, null);
