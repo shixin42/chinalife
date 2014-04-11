@@ -99,7 +99,8 @@ public class FileUploadUtil {
         for (FileItem item : items) {
             if (item.isFormField()) {
                 String fieldName = item.getFieldName();
-                String fieldValue = item.getString();
+                String fieldValue = item.getString("UTF-8");
+                logger.info("Get form field and value : " + fieldName + ", " + fieldValue);
                 formFields.put(fieldName, fieldValue);
             }
         }
@@ -118,20 +119,20 @@ public class FileUploadUtil {
     public static void saveToDisk(List<FileItem> items, File saveTo, BeforeProcessor before, AfterProcessor after) throws Exception {
         for (FileItem item : items) {
             if (!item.isFormField()) {
-                if (null != before) {
-                    before.process(item, saveTo);
-                }
-
-                File newFile = new File(saveTo, item.getName());
-                if (newFile.exists()) {
-                    logger.info("File " + newFile.getPath() + " exists, will delete.");
-                    newFile.delete();
-                }
-                item.write(newFile);
-
-                if (null != after) {
-                    after.process(newFile);
-                }
+//                if (null != before) {
+//                    before.process(item, saveTo);
+//                }
+                logger.info("file name tracycc: " +item.getName());
+//                File newFile = new File(saveTo, item.getName());
+//                if (newFile.exists()) {
+//                    logger.info("File " +item.getName() +" path: "+ newFile.getPath() + " exists, will delete.");
+//                    newFile.delete();
+//                }
+//                item.write(newFile);
+//
+//                if (null != after) {
+//                    after.process(newFile);
+//                }
             }
         }
     }
@@ -148,6 +149,7 @@ public class FileUploadUtil {
         if (null != listener) {
             fileUpload.setProgressListener(listener);
         }
+        fileUpload.setHeaderEncoding("UTF-8");
 
         return fileUpload.parseRequest(request);
     }

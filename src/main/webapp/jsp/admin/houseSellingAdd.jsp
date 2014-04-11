@@ -11,82 +11,117 @@
 <head>
     <title>House Add</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <c:import url="/template/style.html"/>
-    <c:import url="/template/js.html"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="../../css/jquery.fileupload.css">
+    <link rel="stylesheet" href="../../css/jquery.fileupload-ui.css">
+    <script src="../../js/jquery-1.10.1.js"></script>
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="../../js/upload/jquery.ui.widget.js"></script>
+    <!-- The Templates plugin is included to render the upload/download listings -->
+    <script src="../../js/upload/tmpl.min.js"></script>
+    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+    <script src="../../js/upload/load-image.min.js"></script>
+    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+    <script src="../../js/upload/canvas-to-blob.min.js"></script>
+    <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- blueimp Gallery script -->
+    <script src="../../js/upload/blueimp-gallery.js"></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="../../js/upload/jquery.iframe-transport.js"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="../../js/upload/jquery.fileupload.js"></script>
+    <!-- The File Upload processing plugin -->
+    <script src="../../js/upload/jquery.fileupload-process.js"></script>
+    <!-- The File Upload image preview & resize plugin -->
+    <script src="../../js/upload/jquery.fileupload-image.js"></script>
+    <!-- The File Upload validation plugin -->
+    <script src="../../js/upload/jquery.fileupload-validate.js"></script>
+    <!-- The File Upload user interface plugin -->
+    <script src="../../js/upload/jquery.fileupload-ui.js"></script>
+    <script src="/chinalife/js/jquery.validate.js" type="text/javascript"></script>
     <script type="application/javascript" language="JavaScript">
         $(function () {
             // validate the comment form when it is submitted
             //$("#commentForm").validate();
-            $("#formHouseAdd").validate({
-                rules: {
-                    title: {
-                        required: true,
-                        minlength: 6
-                    },
-                    selectDistrict: "required",
-                    selectStatus: "required",
-                    address: {
-                        required: true,
-                        minlength: 6
-                    },
-                    selectType: "required",
-                    room: {
-                        required: true,
-                        digits: true
-                    },
-                    toilet: {
-                        required: true,
-                        digits: true
-                    },
-                    carport: {
-                        required: true,
-                        digits: true
-                    }
-                },
-
-                messages: {
-                    title: {
-                        required: "Please enter the title",
-                        minlength: "you need to text at least 6 chacaters",
-                        selectStatus: "you need to enter the status of the house"
-                    },
-                    selectStatus: "you need to enter the status of the house",
-                    address: {
-                        required: "Please enter the address",
-                        minlength: "you need to text at least 6 chacaters"
-                    },
-                    selectType: "you need to select a status for the house",
-                    room: {
-                        required: "Please provide a password",
-                        digits: "you need input a digit"
-                    },
-                    toilet: {
-                        required: "Please provide a password",
-                        digits: "you need input a digit"
-                    },
-                    carport: {
-                        required: "Please provide a password",
-                        digits: "you need input a digit"
-                    }
-//                    debug : true
-//                    confirm_password: {
-//                        required: "Please provide a password",
-//                        minlength: "Your password must be at least 5 characters long",
-//                        equalTo: "Please enter the same password as above"
+//            $("#formHouseAdd").validate({
+//                rules: {
+//                    title: {
+//                        required: true,
+//                        minlength: 6
 //                    },
-//                    email: "Please enter a valid email address",
-//                    agree: "Please accept our policy"
-                },
-                //设置错误信息显示的位置
-                errorPlacement: function (error, element) {
-                    //alert(error+":"+element.);
-                    if (element.is(":radio"))
-                        error.appendTo(element.parent().next().next());
-                    else if (element.is(":checkbox"))
-                        error.appendTo(element.parent().next());
-                    else
-                        error.appendTo(element.parent());
-                }
+//                    selectDistrict: "required",
+//                    selectStatus: "required",
+//                    address: {
+//                        required: true,
+//                        minlength: 6
+//                    },
+//                    selectType: "required",
+//                    room: {
+//                        required: true,
+//                        digits: true
+//                    },
+//                    toilet: {
+//                        required: true,
+//                        digits: true
+//                    },
+//                    carport: {
+//                        required: true,
+//                        digits: true
+//                    }
+//                },
+//
+//                messages: {
+//                    title: {
+//                        required: "Please enter the title",
+//                        minlength: "you need to text at least 6 chacaters",
+//                        selectStatus: "you need to enter the status of the house"
+//                    },
+//                    selectStatus: "you need to enter the status of the house",
+//                    address: {
+//                        required: "Please enter the address",
+//                        minlength: "you need to text at least 6 chacaters"
+//                    },
+//                    selectType: "you need to select a status for the house",
+//                    room: {
+//                        required: "Please provide a password",
+//                        digits: "you need input a digit"
+//                    },
+//                    toilet: {
+//                        required: "Please provide a password",
+//                        digits: "you need input a digit"
+//                    },
+//                    carport: {
+//                        required: "Please provide a password",
+//                        digits: "you need input a digit"
+//                    }
+////                    debug : true
+////                    confirm_password: {
+////                        required: "Please provide a password",
+////                        minlength: "Your password must be at least 5 characters long",
+////                        equalTo: "Please enter the same password as above"
+////                    },
+////                    email: "Please enter a valid email address",
+////                    agree: "Please accept our policy"
+//                },
+//                //设置错误信息显示的位置
+//                errorPlacement: function (error, element) {
+//                    //alert(error+":"+element.);
+//                    if (element.is(":radio"))
+//                        error.appendTo(element.parent().next().next());
+//                    else if (element.is(":checkbox"))
+//                        error.appendTo(element.parent().next());
+//                    else
+//                        error.appendTo(element.parent());
+//                }
+//            });
+
+            $('#formHouseAdd').fileupload({
+                // Uncomment the following to send cross-domain cookies:
+                //xhrFields: {withCredentials: true},
+                url: '/chinalife/upload'
             });
         })
     </script>
@@ -102,7 +137,7 @@
 </div>
 <div class="col-md-9">
 <div>
-    <form class="form-horizontal" id="formHouseAdd" method="post" action="/chinalife/houseSaleAdd" enctype="multipart/form-data">
+    <form class="form-horizontal" id="formHouseAdd" method="post" action="" enctype="multipart/form-data">
         <div id="legend" class="">
             <legend class="">House Add</legend>
         </div>
@@ -285,12 +320,37 @@
         <%--div for file upload--%>
         <div class="form-group">
             <label class="col-md-2 control-label">File Button</label>
-
-            <div class="col-md-6 controls">
-                <input class="input-file" id="fileInput" type="file" name="picture">
+            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+            <div class="row fileupload-buttonbar">
+                <div class="col-lg-7">
+                    <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="files[]" multiple>
+                </span>
+                    <button type="reset" class="btn btn-warning cancel">
+                        <i class="glyphicon glyphicon-ban-circle"></i>
+                        <span>Cancel upload</span>
+                    </button>
+                    <!-- The global file processing state -->
+                    <span class="fileupload-process"></span>
+                </div>
+                <!-- The global progress state -->
+                <div class="col-lg-5 fileupload-progress fade">
+                    <!-- The global progress bar -->
+                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                    </div>
+                    <!-- The extended global progress state -->
+                    <div class="progress-extended">&nbsp;</div>
+                </div>
             </div>
-            <div class="col-md-4"></div>
+            <!-- The table listing the files available for upload/download -->
+            <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+
         </div>
+
         <%--div for submit button--%>
         <div class="form-group">
             <label class="col-md-2 control-label"></label>
@@ -301,9 +361,108 @@
             <div class="col-md-4"></div>
         </div>
     </form>
+    <%--<form id="fileupload" action="/chinalife/upload" method="POST" enctype="multipart/form-data">--%>
+        <%--<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->--%>
+        <%--<div class="row fileupload-buttonbar">--%>
+            <%--<div class="col-lg-7">--%>
+                <%--<!-- The fileinput-button span is used to style the file input field as button -->--%>
+                <%--<span class="btn btn-success fileinput-button">--%>
+                    <%--<i class="glyphicon glyphicon-plus"></i>--%>
+                    <%--<span>Add files...</span>--%>
+                    <%--<input type="file" name="files[]" multiple>--%>
+                <%--</span>--%>
+                <%--<button type="reset" class="btn btn-warning cancel">--%>
+                    <%--<i class="glyphicon glyphicon-ban-circle"></i>--%>
+                    <%--<span>Cancel upload</span>--%>
+                <%--</button>--%>
+                <%--<!-- The global file processing state -->--%>
+                <%--<span class="fileupload-process"></span>--%>
+            <%--</div>--%>
+            <%--<!-- The global progress state -->--%>
+            <%--<div class="col-lg-5 fileupload-progress fade">--%>
+                <%--<!-- The global progress bar -->--%>
+                <%--<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">--%>
+                    <%--<div class="progress-bar progress-bar-success" style="width:0%;"></div>--%>
+                <%--</div>--%>
+                <%--<!-- The extended global progress state -->--%>
+                <%--<div class="progress-extended">&nbsp;</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!-- The table listing the files available for upload/download -->--%>
+        <%--<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>--%>
+    <%--</form>--%>
 </div>
 </div>
 </div>
 </div>
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}" width="80" height="60"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
 </body>
 </html>
