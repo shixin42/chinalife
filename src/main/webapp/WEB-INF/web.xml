@@ -72,8 +72,8 @@
         <servlet-class>com.chinalife.servlet.TestFileUploadServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>uploadServlet</servlet-name>
-        <servlet-class>com.chinalife.servlet.uploadServlet</servlet-class>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.chinalife.servlet.admin.UploadServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -93,7 +93,7 @@
         <url-pattern>/FileUpload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>uploadServlet</servlet-name>
+        <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 
