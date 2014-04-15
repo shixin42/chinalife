@@ -73,6 +73,11 @@ public class UploadServlet extends BaseServlet {
                 printWriter.close();
             }
         } else {
+            if (hasParam(request, "deleteFile")) {
+                String filePath = getParam(request, "deleteFile");
+                File file = new File(filePath);
+                file.delete();
+            }
         }
     }
 
