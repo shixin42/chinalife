@@ -19,7 +19,7 @@
     </context-param>
     <context-param>
         <param-name>tmp</param-name>
-        <param-value>D:\bin\apache-tomcat-7.0.52\temp</param-value>
+        <param-value>/tmp</param-value>
     </context-param>
 
     <listener>
@@ -73,7 +73,11 @@
     </servlet>
     <servlet>
         <servlet-name>UploadServlet</servlet-name>
-        <servlet-class>com.chinalife.servlet.admin.UploadServlet</servlet-class>
+        <servlet-class>com.chinalife.servlet.UploadServlet</servlet-class>
+        <init-param>
+            <param-name>save.path</param-name>
+            <param-value>house_pictures</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>

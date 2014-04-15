@@ -19,6 +19,7 @@
         <db_user>shixin</db_user>
         <db_password>shixin</db_password>
         <jetty_version>9.0.2.v20130417</jetty_version>
+        <tmp_path>/tmp</tmp_path>
     </properties>
     <profiles>
         <profile>
@@ -34,6 +35,7 @@
                 <log4j_level>INFO</log4j_level>
                 <db_user>shixin</db_user>
                 <db_password>shixin</db_password>
+                <tmp_path>/tmp</tmp_path>
             </properties>
         </profile>
         <profile>
@@ -51,6 +53,7 @@
                 <log4j_level>INFO</log4j_level>
                 <db_user>root</db_user>
                 <db_password>root</db_password>
+                <tmp_path>D:\bin\apache-tomcat-7.0.52\temp</tmp_path>
             </properties>
         </profile>
     </profiles>
@@ -134,12 +137,26 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.3.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20140107</version>
+        </dependency>
     </dependencies>
 
     <build>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/webapp/WEB-INF</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>

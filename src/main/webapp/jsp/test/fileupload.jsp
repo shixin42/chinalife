@@ -1,50 +1,33 @@
-<!DOCTYPE HTML>
 <!--
 /*
- * jQuery File Upload Plugin Demo 9.0.1
- * https://github.com/blueimp/jQuery-File-Upload
- *
- * Copyright 2010, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
+* jQuery File Upload Plugin Demo 9.0.1
+* https://github.com/blueimp/jQuery-File-Upload
+*
+* Copyright 2010, Sebastian Tschan
+* https://blueimp.net
+*
+* Licensed under the MIT license:
+* http://www.opensource.org/licenses/MIT
+*/
 -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+
     <title>jQuery File Upload Demo</title>
+
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="../../css/bootstrap.css">
+
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
     <link rel="stylesheet" href="../../css/jquery.fileupload.css">
     <link rel="stylesheet" href="../../css/jquery.fileupload-ui.css">
-    <script src="../../js/jquery-1.10.1.js"></script>
-    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-    <script src="../../js/upload/jquery.ui.widget.js"></script>
-    <!-- The Templates plugin is included to render the upload/download listings -->
-    <script src="../../js/upload/tmpl.min.js"></script>
-    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-    <script src="../../js/upload/load-image.min.js"></script>
-    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-    <script src="../../js/upload/canvas-to-blob.min.js"></script>
-    <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
-    <script src="../../js/bootstrap.js"></script>
-    <!-- blueimp Gallery script -->
-    <script src="../../js/upload/blueimp-gallery.js"></script>
-    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-    <script src="../../js/upload/jquery.iframe-transport.js"></script>
-    <!-- The basic File Upload plugin -->
-    <script src="../../js/upload/jquery.fileupload.js"></script>
-    <!-- The File Upload processing plugin -->
-    <script src="../../js/upload/jquery.fileupload-process.js"></script>
-    <!-- The File Upload image preview & resize plugin -->
-    <script src="../../js/upload/jquery.fileupload-image.js"></script>
-    <!-- The File Upload validation plugin -->
-    <script src="../../js/upload/jquery.fileupload-validate.js"></script>
-    <!-- The File Upload user interface plugin -->
-    <script src="../../js/upload/jquery.fileupload-ui.js"></script>
+
+    <c:import url="/template/js.html"/>
+    <c:import url="/template/import-jquery-file-upload.html"/>
+
     <script type="application/javascript" language="JavaScript">
         $(function () {
             // Initialize the jQuery File Upload widget:
@@ -60,11 +43,11 @@
 //                },
                 url: '/chinalife/upload'
             });
-            $('#fileupload').bind('fileuploaddone', function(e, result){
+            $('#fileupload').bind('fileuploaddone', function (e, result) {
                 $.each(result.result.files, function (index, file) {
 //                    $('<p/>').text(file.name).appendTo(document.body);
 //                    alert("file name:"+file.name+ " url:"+ file.url+ " index:"+index);
-                    $("#divForFileUpload").append("<input type='hidden' value='"+file.url+"' name='upload'>");
+                    $("#divForFileUpload").append("<input type='hidden' value='" + file.url + "' name='upload'>");
                 });
 //                alert(result.result.toString());
             });
@@ -74,6 +57,7 @@
 <body>
 <div class="container">
     <h1>jQuery File Upload Demo</h1>
+
     <form class="form-horizontal" id="formHouseAdd" method="post" action="" enctype="multipart/form-data">
         <div class="form-group">
             <label class="col-md-2 control-label" for="title">标题</label>
@@ -147,11 +131,14 @@
             </div>
         </div>
         <!-- The table listing the files available for upload/download -->
-        <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+        <table role="presentation" class="table table-striped">
+            <tbody class="files"></tbody>
+        </table>
 
     </form>
     <br>
 </div>
+
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -183,6 +170,13 @@
         </td>
     </tr>
 {% } %}
+
+
+
+
+
+
+
 </script>
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
@@ -226,6 +220,13 @@
         </td>
     </tr>
 {% } %}
+
+
+
+
+
+
+
 </script>
 
 </body>
