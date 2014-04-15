@@ -55,10 +55,18 @@
 //                done:function(e, data){
 //                   alert("done");
 //                }
-                done : function (result, textStatus, jqXHR){
-                    alert("bb");
-                },
-                url: '/chinalife/uploadcc'
+//                done : function (result, textStatus, jqXHR){
+//                    alert("bb");
+//                },
+                url: '/chinalife/upload'
+            });
+            $('#fileupload').bind('fileuploaddone', function(e, result){
+                $.each(result.result.files, function (index, file) {
+//                    $('<p/>').text(file.name).appendTo(document.body);
+//                    alert("file name:"+file.name+ " url:"+ file.url+ " index:"+index);
+                    $("#divForFileUpload").append("<input type='hidden' value='"+file.url+"' name='upload'>");
+                });
+//                alert(result.result.toString());
             });
         });
     </script>
@@ -66,10 +74,39 @@
 <body>
 <div class="container">
     <h1>jQuery File Upload Demo</h1>
+    <form class="form-horizontal" id="formHouseAdd" method="post" action="" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="title">标题</label>
 
-    <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-star"></span> Star
-    </button>
+            <div class="col-md-6 controls">
+                <input placeholder="请填写标题" class="form-control" id="title" type="text"
+                       name="title">
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">区域选择</label>
+
+            <div class="col-md-4 controls">
+                <select id="selectDistrict" name="district" class="form-control">
+                    <option value="">请选择</option>
+                    <option value="central">市中心</option>
+                    <option value="southEast">东南区</option>
+                    <option value="north">北区</option>
+                    <option value="northEast">东北区</option>
+                    <option value="east">东区</option>
+                    <option value="south">南区</option>
+                    <option value="west">西区</option>
+                    <option value="northWest">西北区</option>
+                    <option value="southWest">西南区</option>
+                </select>
+            </div>
+            <div class="col-md-6"></div>
+
+        </div>
+        <div class="form-group" id="divForFileUpload">
+        </div>
+    </form>
 
     <br>
     <!-- The file upload form used as target for the file upload widget -->

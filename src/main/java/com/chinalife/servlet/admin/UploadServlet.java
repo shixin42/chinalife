@@ -29,15 +29,22 @@ public class UploadServlet extends BaseServlet {
             Validate.isTrue(ServletFileUpload.isMultipartContent(request), "Invalid request form type.");
 
             String appPath = getAppPath();
+            //使用服务器地址 basePath = http://localhost:8080/chinalife/
+            String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ request.getContextPath() + "/";
+            String savedDirectory = "house-sale-picture";
 
-            File houseSalePictureDir = new File(appPath, "house-sale-pictures");
+            File houseSalePictureDir = new File(appPath, savedDirectory);
+            Long sysTime = System.currentTimeMillis();
+
             if (!houseSalePictureDir.exists()) {
                 houseSalePictureDir.mkdir();
             }
-
-            File savePath = new File(houseSalePictureDir, System.currentTimeMillis() + "");
+            logger.info("houseSalePictureDir:"+houseSalePictureDir.toPath());
+            File savePath = new File(houseSalePictureDir, sysTime + "");
             savePath.mkdir();
-
+            logger.info("savePath:" + savePath.toPath());
+            logger.info("appPath:" + appPath);
+            logger.info("basePath:" + basePath);
             response.setContentType("application/json");
             PrintWriter printWriter = response.getWriter();
 
@@ -47,7 +54,7 @@ public class UploadServlet extends BaseServlet {
             try {
                 String tmpPath = getTmpPath();
                 List<FileItem> items = FileUploadUtil.getFileIterms(request, tmpPath, 0, 0, null);
-
+                String saveUrl = basePath + "/" + savedDirectory + "/" + sysTime;
                 for (FileItem item : items) {
                     if (!item.isFormField()) {
                         File savedFile = new File(savePath, item.getName());
@@ -57,8 +64,9 @@ public class UploadServlet extends BaseServlet {
                         UploadResponse uploadResponse = new UploadResponse();
                         uploadResponse.setName(item.getName());
                         uploadResponse.setSize(item.getSize());
-                        uploadResponse.setPath(savedFile.getPath());
-
+//                        uploadResponse.setUrl(savedFile.getPath());
+                        uploadResponse.setUrl(saveUrl + "/" + item.getName());
+                        uploadResponse.setThumbnailUrl(saveUrl + "/" + item.getName());
                         uploadResponses.add(uploadResponse);
                     }
                 }
@@ -67,6 +75,7 @@ public class UploadServlet extends BaseServlet {
                 throw new ServletException(e);
             } finally {
                 String responseContent = objectMapper.writeValueAsString(uploadResponses);
+                responseContent = "{\"files\":" + responseContent + "}";
                 logger.info("Response content : " + responseContent);
 
                 printWriter.write(responseContent);
@@ -84,7 +93,8 @@ public class UploadServlet extends BaseServlet {
     private static class UploadResponse {
         private String name;
         private long size;
-        private String path;
+        private String url;
+        private String thumbnailUrl;
 
         public String getName() {
             return name;
@@ -102,12 +112,20 @@ public class UploadServlet extends BaseServlet {
             this.size = size;
         }
 
-        public String getPath() {
-            return path;
+        public String getUrl() {
+            return url;
         }
 
-        public void setPath(String path) {
-            this.path = path;
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getThumbnailUrl() {
+            return thumbnailUrl;
+        }
+
+        public void setThumbnailUrl(String thumbnailUrl) {
+            this.thumbnailUrl = thumbnailUrl;
         }
     }
 }

@@ -834,9 +834,6 @@
 
             response.textStatus = options.textStatus = textStatus;
             response.jqXHR = options.jqXHR = jqXHR;
-            alert( response.result.files[0].name+" url:"+ response.result.files[0].url);
-            alert( response.textStatus);
-            alert( response.jqXHR);
             this._trigger('done', null, options);
         },
 
