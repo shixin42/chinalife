@@ -51,61 +51,15 @@
             $('#fileupload').fileupload({
                 // Uncomment the following to send cross-domain cookies:
                 //xhrFields: {withCredentials: true},
-                url: '/chinalife/upload'
-            });
-
-//            // Enable iframe cross-domain access via redirect option:
-//            $('#fileupload').fileupload(
-//                    'option',
-//                    'redirect',
-//                    window.location.href.replace(
-//                            /\/[^\/]*$/,
-//                            '/cors/result.html?%s'
-//                    )
-//            );
-//
-//            if (window.location.hostname === 'blueimp.github.io') {
-//                // Demo settings:
-//                alert(window.location.hostname);
-//                $('#fileupload').fileupload('option', {
-//                    url: '//jquery-file-upload.appspot.com/',
-//                    // Enable image resizing, except for Android and Opera,
-//                    // which actually support image resizing, but fail to
-//                    // send Blob objects via XHR requests:
-//                    disableImageResize: /Android(?!.*Chrome)|Opera/
-//                            .test(window.navigator.userAgent),
-//                    maxFileSize: 5000000,
-//                    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
-//                });
-//                // Upload server status check for browsers with CORS support:
-//                if ($.support.cors) {
-//                    alert("supoort. cors")
-//                    $.ajax({
-//                        url: '//jquery-file-upload.appspot.com/',
-//                        type: 'HEAD'
-//                    }).fail(function () {
-//                        $('<div class="alert alert-danger"/>')
-//                                .text('Upload server currently unavailable - ' +
-//                                        new Date())
-//                                .appendTo('#fileupload');
-//                    });
+//                url: '/chinalife/upload',
+//                done:function(e, data){
+//                   alert("done");
 //                }
-//            } else {
-//                // Load existing files:
-//                $('#fileupload').addClass('fileupload-processing');
-//                $.ajax({
-//                    // Uncomment the following to send cross-domain cookies:
-//                    //xhrFields: {withCredentials: true},
-//                    url: $('#fileupload').fileupload('option', 'url'),
-//                    dataType: 'json',
-//                    context: $('#fileupload')[0]
-//                }).always(function () {
-//                    $(this).removeClass('fileupload-processing');
-//                }).done(function (result) {
-//                    $(this).fileupload('option', 'done')
-//                            .call(this, $.Event('done'), {result: result});
-//                });
-//            }
+                done : function (result, textStatus, jqXHR){
+                    alert("bb");
+                },
+                url: '/chinalife/uploadcc'
+            });
         });
     </script>
 </head>
@@ -157,6 +111,7 @@
         </div>
         <!-- The table listing the files available for upload/download -->
         <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+
     </form>
     <br>
 </div>
