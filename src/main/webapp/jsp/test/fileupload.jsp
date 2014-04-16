@@ -41,17 +41,22 @@
 //                done : function (result, textStatus, jqXHR){
 //                    alert("bb");
 //                },
-                url: '/chinalife/upload'
+                url: '/chinalife/upload',
+                maxFileSize: 3000000,
+                acceptFileTypes:  /(\.|\/)(gif|jpe?g|png)$/i
             });
             $('#fileupload').bind('fileuploaddone', function (e, result) {
                 $.each(result.result.files, function (index, file) {
 //                    $('<p/>').text(file.name).appendTo(document.body);
 //                    alert("file name:"+file.name+ " url:"+ file.url+ " index:"+index);
-                    $("#divForFileUpload").append("<input type='hidden' value='" + file.url + "' name='upload'>");
+                    $("#divForFileUpload").append("<input type='hidden' value='" + file.url + "' name='upload' id='"+file.name+"'>");
                 });
 //                alert(result.result.toString());
             });
         });
+        function deleteAction(fileID){
+            alert(fileID);
+        }
     </script>
 </head>
 <body>
@@ -112,7 +117,7 @@
                     <i class="glyphicon glyphicon-ban-circle"></i>
                     <span>Cancel upload</span>
                 </button>
-                <button type="button" class="btn btn-danger delete">
+                <button type="button" class="btn btn-danger delete" onclick="deleteAction();">
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Delete</span>
                 </button>
@@ -170,13 +175,6 @@
         </td>
     </tr>
 {% } %}
-
-
-
-
-
-
-
 </script>
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
@@ -206,7 +204,7 @@
         </td>
         <td>
             {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <button class="btn btn-danger delete" onclick="deleteAction({%=file.name});" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Delete</span>
                 </button>
@@ -220,13 +218,6 @@
         </td>
     </tr>
 {% } %}
-
-
-
-
-
-
-
 </script>
 
 </body>

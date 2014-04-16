@@ -145,7 +145,7 @@
 <div>
     <form class="form-horizontal" id="formHouseAdd" method="post" action="" enctype="multipart/form-data">
         <div id="legend" class="">
-            <legend class="">House Add</legend>
+            <legend class="">新增售房信息</legend>
         </div>
         <%--div for title--%>
         <div class="form-group">
@@ -329,18 +329,20 @@
         </div>
         <%--div for submit button--%>
         <div class="form-group">
-            <label class="col-md-2 control-label"></label>
-
             <div class="col-md-6 controls">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             <div class="col-md-4"></div>
         </div>
     </form>
-    <form id="fileupload" action="/chinalife/upload" method="POST" enctype="multipart/form-data">
+    <form id="fileupload" action="/chinalife/upload" method="POST" enctype="multipart/form-data" style="height: 300">
+        <div id="legendImg" class="">
+            <legend class="">上传图片</legend>
+        </div>
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
-            <div class="col-lg-7">
+            <label class="col-md-2 control-label"></label>
+            <div class="col-md-10">
                 <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button">
                     <i class="glyphicon glyphicon-plus"></i>
